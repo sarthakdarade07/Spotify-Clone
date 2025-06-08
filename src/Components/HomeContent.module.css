@@ -1,0 +1,50 @@
+.container{
+    max-height: 80vh;
+    width: 95%;
+    display: flex;
+    margin: auto;
+}
+
+.columns{
+    padding: 2vw; 
+    max-height: 75vh;
+    min-height: 75vh;
+    width: 30%;
+    margin: 0.2vw;
+    background-color: #212121;
+    border-radius: 1vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+
+.columns::-webkit-scrollbar{
+    visibility: hidden;
+}
+
+#column2{
+    width: 50%;
+}
+
+.columnHeading{
+max-width: 100%;
+
+height: 10%;
+}
+
+.columnHeading button{
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color:  #303030;
+    color: white;
+    margin-left: 26%;
+   
+}
+
+.columnHeading button:hover{
+    background-color:#373737 ;
+}
+

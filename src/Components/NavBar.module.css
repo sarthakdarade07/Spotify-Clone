@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+*{
+        margin: 0;
+        border: border-box;
+        font-family: 'Montserrat', sans-serif;
+
+}
+#nav{
+    background-color: #000000;
+   
+}
+
+body{
+    background-color: #000000;
+}
+
+#spotifyIcon{
+    margin-left: 1vw;
+}
+#homeIcon{
+    background-color: #1F1F1F;
+    border-radius: 50%;
+    font-size: large;
+    margin-right:1vw;
+    color: white;
+    border: transparent;
+    transition: transform 0.1s ease-in;
+}
+#nav_search{
+border-top-left-radius: 5vw;
+border-bottom-left-radius: 5vw;
+border-top-right-radius: 5vw;
+border-bottom-right-radius: 5vw;
+width: 30vw;
+background-color: #1F1F1F;
+padding-left:3vw ;
+height: auto;
+
+}
+#nav_search:hover,#nav_search:focus,#nav_search::before{
+    color: 0.1rem solid white;
+    background-color: #2A2A2A;
+    outline: none !important;
+    box-shadow: none !important;
+    
+}
+
+
+#serch_icon{
+    position: absolute;
+    padding: 0.8vw;
+    color: #B3B3B3;
+}
+
+/* Explore Premium Btn */
+#nav_button{
+ margin-left: 20vw;
+border-top-left-radius: 5vw;
+border-bottom-left-radius: 5vw;
+border-top-right-radius: 5vw;
+border-bottom-right-radius: 5vw;
+scale: 0.8;
+transition: transform 0.1s ease-in;
+
+}
+
+#nav_button:hover,#profileIcon:hover,#spanTxt:hover,#homeIcon:hover,#icon:hover{
+    transform: scale(1.04);
+}
+
+#spanTxt{
+    color: white;
+    padding-left: 1.2vw;
+    transition: transform 0.1s ease-in;
+}
+
+#profileIcon{
+    border-radius: 50%;
+    position: absolute;
+    right: 1vw;
+    transition: transform 0.1s ease-in;
+    background-color: #B49BC8;
+}
+
+#icon{
+    transition: transform 0.1s ease-in;
+}
+
+#browseIcon{
+    position: relative;
+    padding: 0.8vw;
+    color: #B3B3B3;
+    left: -5vw;
+    font-size: medium;
+}

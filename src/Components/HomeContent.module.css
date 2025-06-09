@@ -11,7 +11,7 @@
     min-height: 75vh;
     width: 30%;
     margin: 0.2vw;
-    background-color: #212121;
+    background-color: #121212;
     border-radius: 1vw;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -25,6 +25,7 @@
 
 #column2{
     width: 50%;
+    background-color: #212121;
 }
 
 .columnHeading{
@@ -44,7 +45,47 @@ height: 10%;
    
 }
 
-.columnHeading button:hover{
+.columnHeading button:hover,#playListBtn:hover{
     background-color:#373737 ;
 }
 
+.dropdownContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+#playListBtn{
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    background-color:  #303030;
+    color: white;
+    height: 2.3rem;
+    padding: auto;
+}
+
+#sortIndicator{
+    margin-top: 4%;
+}
+
+#dropdownlist{
+    background-color: #282828;
+}
+
+#dropdownButton{
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+#viewasContainer{
+    width: 90%;
+    margin: auto;
+    border-radius: 4%;
+    background-color: #1F1F1F;
+}
+
+#liText{
+    font-size: 0.8rem;
+}

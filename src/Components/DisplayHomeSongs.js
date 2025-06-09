@@ -10,8 +10,6 @@ function DisplayHomeSongs(props) {
     if (props.albums && props.tracks) {
       setAlbums(props.albums);
       setTracks(props.tracks);
-      console.log(albums);
-      console.log(tracks);
     }
   }, [props.albums, props.tracks]);
 

@@ -17,7 +17,7 @@ function NavBar() {
           breakpoints="sm"
         >
           <a
-            class="navbar-brand"
+            className="navbar-brand"
             href="#"
             data-toggle="tooltip"
             data-placement="bottom"

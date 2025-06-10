@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./HomeContent.module.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import NavBar from "./NavBar";
 import RecommondedSongs from "./RecommondedSongs";
 
 function HomeContent() {

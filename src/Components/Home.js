@@ -12,8 +12,8 @@ function Home() {
 
 
 
-  const clientId = "bb"; // client id 
-  const clientSecret = "bb";  //client Secret 
+  const clientId = "bb67dff9f47b4a018b86d2219fb6d7a5"; // client id 
+  const clientSecret = "d1e87675b3f94c93897ee0c003b657a5";  //client Secret 
   const artistIds = [
     { id: "4YRxDV8wJFPHPTeXepOstw", name: "Arijit Singh" },
     { id: "0oOet2f43PA68X5RxKobEy", name: "Shreya Ghoshal" },

@@ -26,7 +26,7 @@
 #column2{
     width: 50%;
     background-color: #121212;
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
 
 #column2::-webkit-scrollbar{
@@ -35,8 +35,14 @@
 
 #column2::-webkit-scrollbar-thumb{
     background-color: #303030;
-    background-color: #121212;
 }
+
+#column2::-webkit-scrollbar-track{
+    border-radius: 1vw;
+    height: 100%;
+}
+
+
 
 .columnHeading{
 max-width: 100%;
@@ -156,6 +162,7 @@ height: 10%;
     background-color: #121212;
     max-height: 50vh;
    overflow-y: hidden;
+   scroll-behavior:smooth;
 }
 
 .CardWrapper::-webkit-scrollbar{
@@ -194,4 +201,17 @@ height: 10%;
 .cardLink img{
     height: 60%;
     padding: 0.5vw;
+}
+/* most outer div of card slider */
+.cardSlider{
+    display: flex;
+    flex-direction: row;
+}
+
+/* pevious and next btn to move slider on click */
+
+#moveBtns{
+    height: 2%;
+    border-radius: 50%;
+    margin-top: 20%;
 }

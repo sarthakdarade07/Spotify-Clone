@@ -20,10 +20,8 @@ function HomeContent() {
   }
 
   useEffect(() => {
-      setAlbums(JSON.parse(localStorage.getItem("albums")));
-      setTracks(JSON.parse(localStorage.getItem("tracks")));
-     
-    
+    setAlbums(JSON.parse(localStorage.getItem("albums")));
+    setTracks(JSON.parse(localStorage.getItem("tracks")));
   }, []);
 
   return (

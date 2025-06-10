@@ -5,15 +5,15 @@ import DisplayHomeSongs from "./DisplayHomeSongs";
 import HomeContent from "./HomeContent";
 import NavBar from "./NavBar";
 
-
-
 function Home() {
   let [albumList, setAlbumList] = useState([]);
   let [token, setToken] = useState();
   let [trackList, setTracks] = useState([]);
 
-  const clientId = "";
-  const clientSecret = "";
+
+
+  const clientId = "bb"; // client id 
+  const clientSecret = "bb";  //client Secret 
   const artistIds = [
     { id: "4YRxDV8wJFPHPTeXepOstw", name: "Arijit Singh" },
     { id: "0oOet2f43PA68X5RxKobEy", name: "Shreya Ghoshal" },
@@ -42,7 +42,7 @@ function Home() {
     let res = await fetch(
       "https://api.spotify.com/v1/artists/" +
         artistId +
-        "/albums?include_groups=album,single&limit=3",
+        "/albums?include_groups=album,single&limit=5",
       {
         method: "GET",
         headers: { Authorization: "Bearer " + token },
@@ -67,7 +67,7 @@ function Home() {
 
     return result.items;
   }
-
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -83,7 +83,11 @@ function Home() {
             }))
           )
         );
+        if(allAlbums){
         setAlbumList(allAlbums);
+        localStorage.setItem("albums",JSON.stringify(allAlbums));
+        }
+        
 
         // Parallel fetch of tracks from all albums
         const allTracks = await Promise.all(
@@ -96,11 +100,16 @@ function Home() {
             )
           )
         );
+        if(allTracks){
         setTracks(allTracks);
+        localStorage.setItem("tracks", JSON.stringify(allTracks));
+        }
       } catch (err) {
         console.error("Error fetching:", err);
       }
     };
+
+   
     document.body.style.backgroundColor = "black";
     document.body.style.color = "white"; // optional
     fetchData();
@@ -108,9 +117,8 @@ function Home() {
 
   return (
     <>
-       
-      <DisplayHomeSongs albums={albumList} tracks={trackList}></DisplayHomeSongs>
-    
+      <DisplayHomeSongs
+      ></DisplayHomeSongs>
     </>
   );
 }

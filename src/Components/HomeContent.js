@@ -1,16 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./HomeContent.module.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import NavBar from "./NavBar";
+import RecommondedSongs from "./RecommondedSongs";
 
 function HomeContent() {
-  let[sortBy,setSortBy]=useState("Recents");
+  let [sortBy, setSortBy] = useState("Recents");
+  let [albumsData, setAlbums] = useState([]);
+  let [tracks, setTracks] = useState([]);
 
-  function funChange(event){
-    console.log("hi");
-      console.log(event.target.innerText);
-      setSortBy(event.target.innerText);
-
+  function funChange(event) {
+    console.log(event.target.innerText);
+    setSortBy(event.target.innerText);
+    try {
+      console.log(albumsData[0].albums[3].name);
+    } catch (e) {
+      console.log("error");
+    }
   }
+
+  useEffect(() => {
+      setAlbums(JSON.parse(localStorage.getItem("albums")));
+      setTracks(JSON.parse(localStorage.getItem("tracks")));
+     
+    
+  }, []);
+
   return (
     <>
       <div className={styles.container}>
@@ -114,19 +129,38 @@ function HomeContent() {
             </div>
             <div className={styles.playListCardContainer}>
               <div className={styles.playListCard}>
-                <img src="Images\spotify_nav_logo.png" className={styles.playlistImg}/>
+                <img
+                  src="Images\music_Icon_image.png"
+                  className={styles.playlistImg}
+                />
                 <div className={styles.cardText}>
                   <h6>Playlist#1</h6>
-                  <p>Playlist<i class="bi bi-dot"></i>Sarthak-Darade</p>
+                  <p>
+                    Playlist<i class="bi bi-dot"></i>Sarthak-Darade
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
+        {/* -------------------------------------------------column2--------------------------------------- */}
         <div className={styles.columns} id={styles.column2}>
-          <div className={styles.content}></div>
+          <div className={styles.content}>
+            <button type="button" class="btn" id={styles.playListBtn}>
+              All
+            </button>
+            {"  "}
+            <button type="button" class="btn" id={styles.playListBtn}>
+              Music
+            </button>
+            {"  "}
+            <button type="button" class="btn" id={styles.playListBtn}>
+              PodCasts
+            </button>
+            <RecommondedSongs></RecommondedSongs>
+          </div>
         </div>
+        {/* -------------------------------------------------column3--------------------------------------- */}
         <div className={styles.columns} id={styles.column3}>
           <div className={styles.content}></div>
         </div>

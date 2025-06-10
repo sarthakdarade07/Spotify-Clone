@@ -16,7 +16,7 @@ function DisplayHomeSongs(props) {
   return (
     <>
       <NavBar></NavBar>
-      <HomeContent></HomeContent>
+      <HomeContent albums={albums} tracks={tracks}></HomeContent>
     </>
   );
 }

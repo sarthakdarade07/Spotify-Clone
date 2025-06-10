@@ -25,7 +25,17 @@
 
 #column2{
     width: 50%;
-    background-color: #212121;
+    background-color: #121212;
+    overflow-x: scroll;
+}
+
+#column2::-webkit-scrollbar{
+    visibility: visible;
+}
+
+#column2::-webkit-scrollbar-thumb{
+    background-color: #303030;
+    background-color: #121212;
 }
 
 .columnHeading{
@@ -34,6 +44,7 @@ max-width: 100%;
 height: 10%;
 }
 
+/*------------------------------------------ columns 1 -------------------------------------------*/
 .columnHeading button{
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -65,6 +76,10 @@ height: 10%;
     padding: auto;
 }
 
+#playListBtn:focus{
+    background-color: white;
+    color: black;
+}
 #sortIndicator{
     margin-top: 4%;
 }
@@ -127,4 +142,56 @@ height: 10%;
     margin-left: 1%;
     font-size: small;
     justify-content: flex-end;
+
+}
+
+  /* ------------------------column 2-------------------------------------------- */
+.reomandationHeader{
+    font-family: 'Poppins', sans-serif;
+    margin-top: 1.5vh;
+}
+.CardWrapper{
+    width: 100%;
+    overflow-x: scroll;
+    background-color: #121212;
+    max-height: 50vh;
+   overflow-y: hidden;
+}
+
+.CardWrapper::-webkit-scrollbar{
+    visibility: hidden;
+}
+.cardContainer{
+    min-width: 1000px;
+    max-height: 60vh;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5vw;
+    text-overflow: ellipsis;
+    font-size: small;
+    background-color: #121212;
+   
+}
+.cardLink{
+    text-decoration: none;
+    color: white;
+}
+
+
+#card{
+    width: 20vw;
+    max-height: 40vh;
+    margin: 0.2vw;
+    background-color: #121212;
+    border: none;
+   
+}
+
+#card:hover{
+    background-color:#1F1F1F;
+}
+
+.cardLink img{
+    height: 60%;
+    padding: 0.5vw;
 }

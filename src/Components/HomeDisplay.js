@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import HomeContent from "./HomeContent";
 
-function DisplayHomeSongs(props) {
+function HomeDisplay(props) {
   let [albums, setAlbums] = useState();
   let [tracks, setTracks] = useState();
 
@@ -16,9 +16,9 @@ function DisplayHomeSongs(props) {
   return (
     <>
       <NavBar></NavBar>
-      <HomeContent albums={albums} tracks={tracks}></HomeContent>
+      <HomeContent></HomeContent>
     </>
   );
 }
 
-export default DisplayHomeSongs;
+export default HomeDisplay;

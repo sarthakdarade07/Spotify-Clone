@@ -9,7 +9,7 @@
     padding: 2vw; 
     max-height: 75vh;
     min-height: 75vh;
-    width: 30%;
+    width: 20%;
     margin: 0.2vw;
     background-color: #121212;
     border-radius: 1vw;
@@ -24,7 +24,7 @@
 }
 
 #column2{
-    width: 50%;
+    width: 60%;
     background-color:#121212;
     overflow-x: hidden;
 }
@@ -58,7 +58,7 @@ height: 10%;
     border-bottom-right-radius: 1rem;
     background-color:  #303030;
     color: white;
-    margin-left: 26%;
+    margin-left: 20%;
    
 }
 
@@ -137,6 +137,7 @@ height: 10%;
     min-height:10vh;
     max-height:15vh;
     max-width: 12vh;
+    min-width: 10%;
     border-top-left-radius: 10%;
     border-bottom-left-radius: 10%;
 }
@@ -146,7 +147,7 @@ height: 10%;
     display: flex;
     flex-direction: column;
     margin-left: 1%;
-    font-size: small;
+    font-size: smaller;
     justify-content: flex-end;
 
 }

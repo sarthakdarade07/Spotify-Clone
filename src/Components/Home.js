@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import DisplayHomeSongs from "./DisplayHomeSongs";
 import ApiCalls from "./ApiCalls";
+import HomeDisplay from "./HomeDisplay";
 
 function Home() {
 
@@ -14,7 +14,7 @@ function Home() {
     <>
     {/* Api calls will fech all APIs */}
     <ApiCalls></ApiCalls>
-      <DisplayHomeSongs></DisplayHomeSongs>
+     <HomeDisplay></HomeDisplay>
     </>
   );
 }

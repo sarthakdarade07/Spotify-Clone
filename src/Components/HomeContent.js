@@ -38,14 +38,11 @@ function HomeContent() {
                   data-bs-placement="top"
                   title="Create a playlist"
                 >
-                  + Create
+                  + 
                 </button>
               </h6>
             </div>
             <div className={styles.dropdownContainer}>
-              <button type="button" class="btn" id={styles.playListBtn}>
-                Playlist
-              </button>
               <h6 id={styles.sortIndicator}>{sortBy}</h6>
               <div class="dropdown">
                 <button
@@ -124,6 +121,7 @@ function HomeContent() {
                 </ul>
               </div>
             </div>
+            
             <div className={styles.playListCardContainer}>
               <div className={styles.playListCard}>
                 <img

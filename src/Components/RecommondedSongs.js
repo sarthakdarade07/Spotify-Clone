@@ -37,7 +37,7 @@ function RecommondedSongs() {
             </button>
             <div className={styles.CardWrapper} id={containerName}>
               <div className={styles.cardContainer}>
-                {albumsData.map((x, i) => {
+                {albumsData.map((x) => {
                   var albumName;
                   var artistNames;
                   var imagesLinks;

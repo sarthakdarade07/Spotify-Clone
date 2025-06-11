@@ -14,8 +14,17 @@ function NavBar() {
           data-bs-theme="dark"
           breakpoints="sm"
         >
-          <a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="Spotify">
-            <i class="bi bi-spotify text-white fs-1" id={styles.spotifyIcon}></i>
+          <a
+            class="navbar-brand"
+            href="#"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Spotify"
+          >
+            <i
+              class="bi bi-spotify text-white fs-1"
+              id={styles.spotifyIcon}
+            ></i>
           </a>
           <Container fluid>
             <Navbar.Toggle aria-controls="navbarScroll" />
@@ -95,16 +104,99 @@ function NavBar() {
                   <i class="bi bi-person  text-white"></i>
                 </Nav.Link>
 
-                <button
+                {/* <button
                   type="button"
                   class="btn btn-light"
                   id={styles.profileIcon}
                   data-toggle="tooltip"
                   data-placement="bottom"
                   title="Sarthak Darade"
+                ></button> */}
+
+                {/* <div class="dropdown" id={styles.profileIcon}>
+                  <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Sarthak Darade"
+                  >
+                    <i class="bi bi-person-circle"></i>
+                  </button>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <a class="dropdown-item" href="#">
+                      Action
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      Another action
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      Something else here
+                    </a>
+                  </div>
+                </div> */}
+
+                <div
+                  class="dropdown"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Sarthak Darade"
+                  id={styles.profileIcon}
                 >
-                  <i class="bi bi-person-circle"></i>
-                </button>
+                  <button
+                    class="btn btn-secondary"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i class="bi bi-person-circle"></i>
+                  </button>
+                  <ul
+                    class="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end"
+                    id={styles.userIconDropdown}
+                  >
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        Account
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        Profile
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        Upgrade to Premium
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        Support
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        Download
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">
+                        Settings
+                      </a>
+                    </li>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                      Log Out
+                    </a>
+                  </ul>
+                </div>
               </Nav>
             </Navbar.Collapse>
           </Container>

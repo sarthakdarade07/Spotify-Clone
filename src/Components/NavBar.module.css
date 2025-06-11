@@ -3,6 +3,7 @@
         margin: 0;
         border: border-box;
         font-family: 'Montserrat', sans-serif;
+        
 
 }
 #nav{
@@ -73,14 +74,22 @@ transition: transform 0.1s ease-in;
     padding-left: 1.2vw;
     transition: transform 0.1s ease-in;
 }
-
 #profileIcon{
+    margin-left:4vw ;
+}
+
+
+
+#profileIcon button {
     border-radius: 50%;
     position: absolute;
     right: 1vw;
     transition: transform 0.1s ease-in;
-    background-color: #B49BC8;
+    background-color: #B49BC8;  
 }
+
+
+
 
 #icon{
     transition: transform 0.1s ease-in;

@@ -38,7 +38,7 @@ function HomeContent() {
                   data-bs-placement="top"
                   title="Create a playlist"
                 >
-                  + 
+                  +
                 </button>
               </h6>
             </div>
@@ -110,16 +110,18 @@ function HomeContent() {
                 </ul>
               </div>
             </div>
-            
+
             <div className={styles.playListCardContainer}>
               <div className={styles.playListCard}>
                 <img
                   src="Images\music_Icon_image.png"
-                  className={styles.playlistImg}/>
+                  className={styles.playlistImg}
+                />
                 <div className={styles.cardText}>
-                  <p>Playlist#1 <br/>
-                  Playlist<i class="bi bi-dot"></i> <br/>
-                  Sarthak-Darade
+                  <p>
+                    Playlist#1 <br />
+                    Playlist<i class="bi bi-dot"></i> <br />
+                    Sarthak-Darade
                   </p>
                 </div>
               </div>

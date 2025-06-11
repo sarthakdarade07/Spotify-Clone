@@ -7,8 +7,11 @@ function ApiCalls() {
 
   // const clientId = ""; // client id
   // const clientSecret = ""; //client Secret
-  const clientId = "d094eedad5a8471195082d8a864070d9";
-  const clientSecret = "2297e21a926348218a800c1e74c936fd";
+
+  const clientId = "bb67dff9f47b4a018b86d2219fb6d7a5";
+  const clientSecret = "d1e87675b3f94c93897ee0c003b657a5";
+  // const clientId = "d094eedad5a8471195082d8a864070d9";
+  // const clientSecret = "2297e21a926348218a800c1e74c936fd";
   const artistIds = [
     { id: "4YRxDV8wJFPHPTeXepOstw", name: "Arijit Singh" },
     { id: "0oOet2f43PA68X5RxKobEy", name: "Shreya Ghoshal" },
@@ -17,7 +20,10 @@ function ApiCalls() {
     { id: "4fEkbug6kZzzJ8eYX6Kbbp", name: "Sonu Nigam" },
     { id: "6eUKZXaKkcviH0Ku9w2n3V", name: "Ed-Sheeran" },
     { id: "1uNFoZAHBGtllmzznpCI3s", name: "Justin Bieber" },
-  
+    { id: "0tC995Rfn9k2l7nqgCZsV7 ", name: "Prateek Kuhad" },
+    { id: "4gdMJYnopf2nEUcanAwstx ", name: "Anuv Jain" },
+    { id: "72beYOeW2sb2yfcS4JsRvb", name: "Ritviz" },
+    { id: "2oBG74gAocPMFv6Ij9ykdo", name: "Seedhe Maut" },
   ];
 
   async function getAccessToken() {

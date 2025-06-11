@@ -9,12 +9,12 @@ function RecommondedSongs() {
 
   function funScrollLeft(name) {
     var scrollContainer = document.querySelector("#" + name);
-    scrollContainer.scrollLeft += 400;
+    scrollContainer.scrollLeft += 650;
   }
 
   function funScrollRight(name) {
     var scrollContainer = document.querySelector("#" + name);
-    scrollContainer.scrollLeft -= 400;
+    scrollContainer.scrollLeft -= 650;
   }
 
 

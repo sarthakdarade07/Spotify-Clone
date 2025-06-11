@@ -89,7 +89,7 @@ function ApiCalls() {
         );
         if (allAlbums) {
           setAlbumList(allAlbums);
-          localStorage.setItem("albums", JSON.stringify(allAlbums));
+          localStorage.setItem("albums", JSON.stringify(albumList));
         }
 
         // Parallel fetch of tracks from all albums
@@ -105,7 +105,7 @@ function ApiCalls() {
         );
         if (allTracks) {
           setTracks(allTracks);
-          localStorage.setItem("tracks", JSON.stringify(allTracks));
+          localStorage.setItem("tracks", JSON.stringify(trackList));
         }
       } catch (err) {
         console.error("Error fetching:", err);

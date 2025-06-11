@@ -14,8 +14,7 @@ function NavBar() {
           data-bs-theme="dark"
           breakpoints="sm"
         >
-          <a
-            class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="Spotify">
+          <a class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="Spotify">
             <i class="bi bi-spotify text-white fs-1" id={styles.spotifyIcon}></i>
           </a>
           <Container fluid>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./HomeContent.module.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { Button } from "bootstrap/dist/js/bootstrap.bundle.min.js";
+
 
 function RecommondedSongs() {
   let [albumsData, setAlbums] = useState([]);

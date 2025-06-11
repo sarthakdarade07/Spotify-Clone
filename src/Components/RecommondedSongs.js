@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./HomeContent.module.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { Button } from "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function RecommondedSongs() {
   let [albumsData, setAlbums] = useState([]);
@@ -47,7 +48,7 @@ function RecommondedSongs() {
 
                     return (
                       <>
-                        <div class="card" id={styles.card} >
+                        <div class="card" id={styles.card}>
                           <a href="#" className={styles.cardLink}>
                             <img
                               src={imagesLinks}
@@ -59,6 +60,9 @@ function RecommondedSongs() {
                               <p class="card-text">{artistNames}</p>
                             </div>
                           </a>
+                          <button className={styles.cardFloatingPlayBtn}>
+                            <i class="fa-solid fa-play"></i>
+                          </button>
                         </div>
                       </>
                     );
@@ -81,7 +85,7 @@ function RecommondedSongs() {
           </div>
         );
       })}
-      {/* -------------------------------------------cardSlider -2------------------------------------- */}
+      
     </>
   );
 }

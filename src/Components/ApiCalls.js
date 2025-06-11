@@ -7,8 +7,8 @@ function ApiCalls() {
 
   // const clientId = ""; // client id
   // const clientSecret = ""; //client Secret
-   const clientId = "f6c37369929b48f5940aebb09fd23367";
-   const clientSecret = "e5e0a6cc6f2542f48df6c9031a72b15c";
+  const clientId = "d094eedad5a8471195082d8a864070d9";
+  const clientSecret = "2297e21a926348218a800c1e74c936fd";
   const artistIds = [
     { id: "4YRxDV8wJFPHPTeXepOstw", name: "Arijit Singh" },
     { id: "0oOet2f43PA68X5RxKobEy", name: "Shreya Ghoshal" },
@@ -16,6 +16,8 @@ function ApiCalls() {
     { id: "5f4QpKfy7ptCHwTqspnSJI", name: "Neha Kakkar" },
     { id: "4fEkbug6kZzzJ8eYX6Kbbp", name: "Sonu Nigam" },
     { id: "6eUKZXaKkcviH0Ku9w2n3V", name: "Ed-Sheeran" },
+    { id: "1uNFoZAHBGtllmzznpCI3s", name: "Justin Bieber" },
+  
   ];
 
   async function getAccessToken() {

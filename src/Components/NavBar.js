@@ -104,44 +104,6 @@ function NavBar() {
                   <i class="bi bi-person  text-white"></i>
                 </Nav.Link>
 
-                {/* <button
-                  type="button"
-                  class="btn btn-light"
-                  id={styles.profileIcon}
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Sarthak Darade"
-                ></button> */}
-
-                {/* <div class="dropdown" id={styles.profileIcon}>
-                  <button
-                    class="btn btn-secondary dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="Sarthak Darade"
-                  >
-                    <i class="bi bi-person-circle"></i>
-                  </button>
-                  <div
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                  >
-                    <a class="dropdown-item" href="#">
-                      Action
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Another action
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </div>
-                </div> */}
-
                 <div
                   class="dropdown"
                   data-toggle="tooltip"

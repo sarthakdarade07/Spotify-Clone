@@ -5,14 +5,17 @@ function ApiCalls() {
   let [token, setToken] = useState();
   let [trackList, setTracks] = useState([]);
 
-  const clientId = ""; // client id
-  const clientSecret = ""; //client Secret
+  // const clientId = ""; // client id
+  // const clientSecret = ""; //client Secret
+   const clientId = "f6c37369929b48f5940aebb09fd23367";
+   const clientSecret = "e5e0a6cc6f2542f48df6c9031a72b15c";
   const artistIds = [
     { id: "4YRxDV8wJFPHPTeXepOstw", name: "Arijit Singh" },
     { id: "0oOet2f43PA68X5RxKobEy", name: "Shreya Ghoshal" },
     { id: "1mYsTxnqsietFxj1OgoGbG", name: "Armaan Malik" },
     { id: "5f4QpKfy7ptCHwTqspnSJI", name: "Neha Kakkar" },
     { id: "4fEkbug6kZzzJ8eYX6Kbbp", name: "Sonu Nigam" },
+    { id: "6eUKZXaKkcviH0Ku9w2n3V", name: "Ed-Sheeran" },
   ];
 
   async function getAccessToken() {
@@ -35,7 +38,7 @@ function ApiCalls() {
     let res = await fetch(
       "https://api.spotify.com/v1/artists/" +
         artistId +
-        "/albums?include_groups=album,single&limit=5",
+        "/albums?include_groups=album,single&limit=6",
       {
         method: "GET",
         headers: { Authorization: "Bearer " + token },

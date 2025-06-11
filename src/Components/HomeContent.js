@@ -107,17 +107,6 @@ function HomeContent() {
                       Creator
                     </a>
                   </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <p class="dropdown-item" id={styles.liText}>
-                      view as
-                    </p>
-                  </li>
-                  <li>
-                    <div id={styles.viewasContainer}>hi</div>
-                  </li>
                 </ul>
               </div>
             </div>
@@ -126,12 +115,11 @@ function HomeContent() {
               <div className={styles.playListCard}>
                 <img
                   src="Images\music_Icon_image.png"
-                  className={styles.playlistImg}
-                />
+                  className={styles.playlistImg}/>
                 <div className={styles.cardText}>
-                  <h6>Playlist#1</h6>
-                  <p>
-                    Playlist<i class="bi bi-dot"></i>Sarthak-Darade
+                  <p>Playlist#1 <br/>
+                  Playlist<i class="bi bi-dot"></i> <br/>
+                  Sarthak-Darade
                   </p>
                 </div>
               </div>

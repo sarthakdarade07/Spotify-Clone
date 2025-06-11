@@ -15,16 +15,8 @@ function NavBar() {
           breakpoints="sm"
         >
           <a
-            className="navbar-brand"
-            href="#"
-            data-toggle="tooltip"
-            data-placement="bottom"
-            title="Spotify"
-          >
-            <i
-              class="bi bi-spotify text-white fs-1"
-              id={styles.spotifyIcon}
-            ></i>
+            class="navbar-brand" href="#" data-toggle="tooltip" data-placement="bottom" title="Spotify">
+            <i class="bi bi-spotify text-white fs-1" id={styles.spotifyIcon}></i>
           </a>
           <Container fluid>
             <Navbar.Toggle aria-controls="navbarScroll" />

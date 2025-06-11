@@ -16,6 +16,7 @@ function RecommondedSongs() {
     scrollContainer.scrollLeft -= 400;
   }
 
+
   useEffect(() => {
     setAlbums(JSON.parse(localStorage.getItem("albums")));
     setTracks(JSON.parse(localStorage.getItem("tracks")));
@@ -29,15 +30,8 @@ function RecommondedSongs() {
       {albumsData.map((xc, ind) => {
         var containerName = "container" + ind;
         return (
-          <div className={styles.cardSlider}>
-            <button
-              type="button"
-              class="btn btn-dark"
-              id={styles.moveBtns}
-              onClick={() => {
-                funScrollRight(containerName);
-              }}
-            >
+          <div className={styles.cardSlider} id={ind}>
+            <button type="button" class="btn btn-dark" id={styles.moveBtnLeft} onClick={() => {funScrollRight(containerName)}}>
               <i class="fa-solid fa-arrow-left"></i>
             </button>
             <div className={styles.CardWrapper} id={containerName}>
@@ -53,7 +47,7 @@ function RecommondedSongs() {
 
                     return (
                       <>
-                        <div class="card" id={styles.card}>
+                        <div class="card" id={styles.card} >
                           <a href="#" className={styles.cardLink}>
                             <img
                               src={imagesLinks}
@@ -77,7 +71,7 @@ function RecommondedSongs() {
             <button
               type="button"
               class="btn btn-dark"
-              id={styles.moveBtns}
+              id={styles.moveBtnRight}
               onClick={() => {
                 funScrollLeft(containerName);
               }}

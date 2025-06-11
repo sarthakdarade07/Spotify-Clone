@@ -129,7 +129,7 @@ height: 10%;
     border-bottom-right-radius: 5%;
     cursor: pointer;
    
-}
+} 
 
 .playListCard:hover{
     background-color: #373737;
@@ -184,7 +184,7 @@ height: 10%;
     flex-direction: row;
     padding: 0.5vw;
     text-overflow: ellipsis;
-    font-size: small;
+    font-size: 68%;
     background-color: #121212;
    
 }
@@ -216,12 +216,40 @@ height: 10%;
 .cardSlider{
     display: flex;
     flex-direction: row;
+    position: relative;
 }
+
+
 
 /* pevious and next btn to move slider on click */
 
-#moveBtns{
-    height: 2%;
+#moveBtnLeft{
+    height: 12%;
     border-radius: 50%;
-    margin-top: 20%;
+    margin-top: 18%;
+    position: absolute;
+    left: 20px;
+    z-index: 999;
+    background-color:#373737;
+    display: none;
 }
+
+
+#moveBtnRight{
+    height: 12%;
+    border-radius: 50%;
+    margin-top: 18%;
+    position: absolute;
+    right: 20px;
+    z-index: 999;
+    background-color:#373737;
+    display: none;
+}
+
+/* Scroll Bittons visible after hovering the div */
+.cardSlider:hover #moveBtnRight,
+.cardSlider:hover #moveBtnLeft {
+    display: block;
+}
+
+

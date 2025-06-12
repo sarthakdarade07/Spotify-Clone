@@ -3,6 +3,7 @@ import styles from "./HomeContent.module.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import RecommondedSongs from "./RecommondedSongs";
 import ExplorePremium from "./ExplorePremium";
+import Footer from "./Footer";
 
 function HomeContent(props) {
   let [sortBy, setSortBy] = useState("Recents");
@@ -82,6 +83,7 @@ function HomeContent(props) {
           <div className={styles.content}>
             {musicFlag && <RecommondedSongs></RecommondedSongs>} 
             {exPremimumFlag && <ExplorePremium setExPremiumClose={getFlagFormExPrem}></ExplorePremium>} 
+            <Footer></Footer>
           </div>
         </div>
 

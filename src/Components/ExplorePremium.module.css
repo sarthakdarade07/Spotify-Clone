@@ -1,0 +1,41 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.HeaderImg{
+    width: 100%;
+    min-height: 100%;
+    border-radius: 2%;
+    cursor: pointer;
+}
+
+.Headers{
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 5%;
+    padding-left: 5%;
+}
+
+.premimumAddDiv p{
+    font-size: 1rem;
+    padding: 10%;
+}
+
+.premimumBenifits i{
+margin-left: 10%;
+margin-right:2%;
+font-size:x-large;
+}
+
+.premimumBenifits li:hover{
+    color: gray;
+    cursor: pointer;
+}
+
+.planCards{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+}

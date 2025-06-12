@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import styles from "./HomeContent.module.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import RecommondedSongs from "./RecommondedSongs";
+import ExplorePremium from "./ExplorePremium";
 
-function HomeContent() {
+function HomeContent(props) {
   let [sortBy, setSortBy] = useState("Recents");
   let [albumsData, setAlbums] = useState([]);
   let [tracks, setTracks] = useState([]);
-
+  let [exPremimumFlag, setExPremimumFlag] = useState(false);
+  let [musicFlag,setMusicFlag]=useState(true);
+ 
   function funChange(event) {
     console.log(event.target.innerText);
     setSortBy(event.target.innerText);
@@ -21,7 +24,13 @@ function HomeContent() {
   useEffect(() => {
     setAlbums(JSON.parse(localStorage.getItem("albums")));
     setTracks(JSON.parse(localStorage.getItem("tracks")));
-  }, []);
+    setExPremimumFlag(props.exPremimumFlag);
+    setMusicFlag(true);
+    if(props.exPremimumFlag==true){
+      setMusicFlag(false);
+    }
+    
+  }, [props]);
 
   return (
     <>
@@ -31,92 +40,28 @@ function HomeContent() {
             <div className={styles.columnHeading}>
               <h6>
                 <strong>Your Library</strong>
-                <button
-                  type="button"
-                  class="btn"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Create a playlist"
-                >
-                  +
-                </button>
+                <button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Create a playlist">+</button>
               </h6>
             </div>
             <div className={styles.dropdownContainer}>
               <h6 id={styles.sortIndicator}>{sortBy}</h6>
               <div class="dropdown">
-                <button
-                  class="btn btn-secondary"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  id={styles.dropdownButton}
-                >
+                <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false" id={styles.dropdownButton}>
                   <i class="bi bi-list-ul"></i>
                 </button>
-                <ul
-                  class="dropdown-menu dropdown-menu-dark"
-                  id={styles.dropdownlist}
-                >
-                  <li>
-                    <p class="dropdown-item " id={styles.liText}>
-                      Sort
-                    </p>
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      onClick={(event) => {
-                        funChange(event);
-                      }}
-                    >
-                      Recents
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      onClick={(event) => {
-                        funChange(event);
-                      }}
-                    >
-                      Recently Added
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      onClick={(event) => {
-                        funChange(event);
-                      }}
-                    >
-                      Alphabetical
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="#"
-                      onClick={(event) => {
-                        funChange(event);
-                      }}
-                    >
-                      Creator
-                    </a>
-                  </li>
+                <ul class="dropdown-menu dropdown-menu-dark" id={styles.dropdownlist}>
+                  <li><p class="dropdown-item" id={styles.liText}>Sort</p></li>
+                  <li><a class="dropdown-item" href="#" onClick={funChange}>Recents</a></li>
+                  <li><a class="dropdown-item" href="#" onClick={funChange}>Recently Added</a></li>
+                  <li><a class="dropdown-item" href="#" onClick={funChange}>Alphabetical</a></li>
+                  <li><a class="dropdown-item" href="#" onClick={funChange}>Creator</a></li>
                 </ul>
               </div>
             </div>
 
             <div className={styles.playListCardContainer}>
               <div className={styles.playListCard}>
-                <img
-                  src="Images\music_Icon_image.png"
-                  className={styles.playlistImg}
-                />
+                <img src="Images\\music_Icon_image.png" className={styles.playlistImg} />
                 <div className={styles.cardText}>
                   <p>
                     Playlist#1 <br />
@@ -128,24 +73,14 @@ function HomeContent() {
             </div>
           </div>
         </div>
-        {/* -------------------------------------------------column2--------------------------------------- */}
+
         <div className={styles.columns} id={styles.column2}>
           <div className={styles.content}>
-            <button type="button" class="btn" id={styles.playListBtn}>
-              All
-            </button>
-            {"  "}
-            <button type="button" class="btn" id={styles.playListBtn}>
-              Music
-            </button>
-            {"  "}
-            <button type="button" class="btn" id={styles.playListBtn}>
-              PodCasts
-            </button>
-            <RecommondedSongs></RecommondedSongs>
+            {musicFlag && <RecommondedSongs></RecommondedSongs>} 
+            {exPremimumFlag && <ExplorePremium></ExplorePremium>} 
           </div>
         </div>
-        {/* -------------------------------------------------column3--------------------------------------- */}
+
         <div className={styles.columns} id={styles.column3}>
           <div className={styles.content}></div>
         </div>

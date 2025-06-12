@@ -24,11 +24,13 @@ function RecommondedSongs() {
   }, []);
   return (
     <>
+              
              <button type="button" class="btn" id={styles.playListBtn}>All</button>{"  "}
             <button type="button" class="btn" id={styles.playListBtn} style={{backgroundColor:'white',color:'black'}}>
               Music
               </button>{"  "}
             <button type="button" class="btn" id={styles.playListBtn}>PodCasts</button>
+           
       <h4 className={styles.reomandationHeader}>Popular Albums</h4>
 
       {/* -------------------------------------------cardSlider -------------------------------------- */}

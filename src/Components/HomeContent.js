@@ -20,7 +20,11 @@ function HomeContent(props) {
       console.log("error");
     }
   }
+  function getFlagFormExPrem(flag){
+    setExPremimumFlag(flag);
+    setMusicFlag(true);
 
+  }
   useEffect(() => {
     setAlbums(JSON.parse(localStorage.getItem("albums")));
     setTracks(JSON.parse(localStorage.getItem("tracks")));
@@ -77,7 +81,7 @@ function HomeContent(props) {
         <div className={styles.columns} id={styles.column2}>
           <div className={styles.content}>
             {musicFlag && <RecommondedSongs></RecommondedSongs>} 
-            {exPremimumFlag && <ExplorePremium></ExplorePremium>} 
+            {exPremimumFlag && <ExplorePremium setExPremiumClose={getFlagFormExPrem}></ExplorePremium>} 
           </div>
         </div>
 

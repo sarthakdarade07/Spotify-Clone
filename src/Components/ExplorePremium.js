@@ -1,7 +1,22 @@
 import styles from './ExplorePremium.module.css'
-function ExplorePremium(){
+function ExplorePremium(props){
+    function funClose(){
+        props.setExPremiumClose(false);
+    }
     return (
       <>
+        <div style={{ marginLeft: "90%" }}>
+          <button
+            type="button"
+            class="btn btn-dark"
+            style={{
+              position: "fixed",
+              borderRadius:'50%',
+            }}
+            onClick={funClose}>
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
         {/*--------------------------- premimum plan Image ----------------------------------*/}
         <div className={styles.premimumAddDiv}>
           <img src="Images\PremiumPlanImg.png" className={styles.HeaderImg} />

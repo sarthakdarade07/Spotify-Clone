@@ -226,8 +226,8 @@ height: 10%;
 #moveBtnLeft{
     height: 12%;
     border-radius: 50%;
-    margin-top: 18%;
     position: absolute;
+    top: 40%;
     left: 20px;
     z-index: 999;
     background-color:#373737;
@@ -238,8 +238,8 @@ height: 10%;
 #moveBtnRight{
     height: 12%;
     border-radius: 50%;
-    margin-top: 18%;
     position: absolute;
+    top: 40%;
     right: 20px;
     z-index: 999;
     background-color:#373737;

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import HomeContent from "./HomeContent";
-import ApiCalls from "./ApiCalls";
+
 
 function HomeDisplay(props) {
-
-
   let [exPremimumFlag, setExPremimumFlag] = useState(false);
+ 
+
+
 
   function getExPremimumFlag(param) {
     setExPremimumFlag(param);
@@ -19,9 +20,11 @@ function HomeDisplay(props) {
 
   return (
     <>
-    {
-      <NavBar sendExPremimumFlag={getExPremimumFlag}></NavBar> }
-      <HomeContent exPremimumFlag={exPremimumFlag}></HomeContent>
+      <NavBar sendExPremimumFlag={getExPremimumFlag}></NavBar>
+        <HomeContent exPremimumFlag={exPremimumFlag}> </HomeContent>
+    
+       
+    
     </>
   );
 }

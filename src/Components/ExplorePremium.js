@@ -1,8 +1,13 @@
+import { useEffect } from 'react';
 import styles from './ExplorePremium.module.css'
 function ExplorePremium(props){
     function funClose(){
         props.setExPremiumClose(false);
     }
+
+    useEffect(()=>{
+
+    },[props])
     return (
       <>
         <div style={{ marginLeft: "90%" }}>

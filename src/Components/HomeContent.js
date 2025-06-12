@@ -11,7 +11,7 @@ function HomeContent(props) {
   let [tracks, setTracks] = useState([]);
   let [exPremimumFlag, setExPremimumFlag] = useState(false);
   let [musicFlag,setMusicFlag]=useState(true);
- 
+  
   function funChange(event) {
     console.log(event.target.innerText);
     setSortBy(event.target.innerText);
@@ -78,11 +78,11 @@ function HomeContent(props) {
             </div>
           </div>
         </div>
-
+              {/* ----------------------column2 ---------------------------------*/}
         <div className={styles.columns} id={styles.column2}>
           <div className={styles.content}>
             {musicFlag && <RecommondedSongs></RecommondedSongs>} 
-            {exPremimumFlag && <ExplorePremium setExPremiumClose={getFlagFormExPrem}></ExplorePremium>} 
+            {exPremimumFlag && <ExplorePremium setExPremiumClose={getFlagFormExPrem} flag={exPremimumFlag}></ExplorePremium>} 
             <Footer></Footer>
           </div>
         </div>
@@ -91,6 +91,7 @@ function HomeContent(props) {
           <div className={styles.content}></div>
         </div>
       </div>
+      
     </>
   );
 }

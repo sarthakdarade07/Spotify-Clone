@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ApiCalls from "./ApiCalls";
 import HomeDisplay from "./HomeDisplay";
 import NavBar from "./NavBar";
+import RecommondedSongs from "./RecommondedSongs";
 
 function Home(props) {
 
@@ -13,8 +14,10 @@ function Home(props) {
   return (
     <>
       {/* Api calls will fech all APIs */}
-      <ApiCalls></ApiCalls>
+      {/* <ApiCalls></ApiCalls> */}
+      
       <HomeDisplay></HomeDisplay>
+   
 
     </>
   );

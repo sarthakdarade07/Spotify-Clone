@@ -7,6 +7,7 @@ import { use, useEffect, useState } from "react";
 import RecommondedSongs from "./RecommondedSongs";
 import HomeDisplay from "./HomeDisplay";
 import HomeContent from "./HomeContent";
+import { Link } from "react-router-dom";
 
 function NavBar(props) {
   let [exPremimumFlag, setExPremimumFlag] = useState(false);
@@ -42,15 +43,18 @@ function NavBar(props) {
             <Nav.Link href="#">
               <span id={styles.browseIcon}> | <i className="bi bi-archive"></i></span>
             </Nav.Link>
-
+                {/* ---------------------------------------------------------------- */}
            
+             {/* ----------------------------------------------------------------- */}
               <button id={styles.nav_button} type="button" className="btn btn-light" data-toggle="tooltip" data-placement="bottom" title="Upgrade to Premium"
                onClick={funClickExPremimum}>
                 Explore Premium
               </button>
 
-              <Nav.Link href="#" id={styles.spanTxt} data-toggle="tooltip" data-placement="bottom" title="Install Now">
+              <Nav.Link  id={styles.spanTxt} data-toggle="tooltip" data-placement="bottom" title="Install Now">
+             
                 <i className="bi bi-file-arrow-down"></i><span>Install App</span>
+             
               </Nav.Link>
 
               <Nav.Link href="#" id={styles.icon} data-toggle="tooltip" data-placement="bottom" title="Whats's New">

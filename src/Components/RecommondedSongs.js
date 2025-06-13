@@ -34,7 +34,7 @@ function RecommondedSongs(props) {
   return (
     <>
       {/*--------------------------------- header buttons----------------- */}
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex",gap:'1%'}}>
         <button type="button" class="btn" id={styles.playListBtn}>
           All
         </button>

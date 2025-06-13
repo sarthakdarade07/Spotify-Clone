@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import styles from './ExplorePremium.module.css'
+import { Link } from 'react-router-dom';
 function ExplorePremium(props){
     function funClose(){
         props.setExPremiumClose(false);
@@ -11,16 +12,18 @@ function ExplorePremium(props){
     return (
       <>
         <div style={{ marginLeft: "90%" }}>
-          <button
-            type="button"
-            class="btn btn-dark"
-            style={{
-              position: "fixed",
-              borderRadius:'50%',
-            }}
-            onClick={funClose}>
-            <i class="fa-solid fa-xmark"></i>
-          </button>
+          
+            <button
+              type="button"
+              class="btn btn-dark"
+              style={{
+                position: "fixed",
+                borderRadius: "50%",
+              }}
+              onClick={funClose}>
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          
         </div>
         {/*--------------------------- premimum plan Image ----------------------------------*/}
         <div className={styles.premimumAddDiv}>

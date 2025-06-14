@@ -2,18 +2,17 @@ import { Table } from "react-bootstrap";
 import styles from "./TrackList.module.css";
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import TrackContext from "./TrackContext";
+
 function Tracks(props) {
-  let {trackName,setTrackName}=useContext(TrackContext);
+
+
+
+  useEffect(() => {
   
-  console.log(trackName);
-  useEffect(()=>{
-      console.log(trackName);
-  },[props])
+  }, [props]);
 
   return (
     <>
-    <Link to="/">Click</Link>
       <div className={styles.artistDiv}>
         <div class="card mb-3">
           <div class="row g-0">

@@ -6,123 +6,117 @@ import ExplorePremium from "./ExplorePremium";
 import Footer from "./Footer";
 import { Route, Routes } from "react-router-dom";
 import InstallApp from "./InstallApp";
-import TrackContext from "./TrackContext";
 import Tracks from "./Tracks";
 
 function HomeContent() {
   let [sortBy, setSortBy] = useState("Recents");
-
-
+  let [trackName, setTrackName] = useState("hi");
   function funChange(event) {
     console.log(event.target.innerText);
     setSortBy(event.target.innerText);
   }
 
- 
-  useEffect(()=>{
-  },[])
-
+  useEffect(() => {}, []);
 
   return (
     <>
-     
-        <div className={styles.container}>
-          <div className={styles.columns} id={styles.column1}>
-            <div className={styles.content}>
-              <div className={styles.columnHeading}>
-                <h6>
-                  <strong>Your Library</strong>
-                  <button
-                    type="button"
-                    class="btn"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Create a playlist">
-                    +
-                  </button>
-                </h6>
-              </div>
-              <div className={styles.dropdownContainer}>
-                <h6 id={styles.sortIndicator}>{sortBy}</h6>
-                <div class="dropdown">
-                  <button
-                    class="btn btn-secondary"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    id={styles.dropdownButton}>
-                    <i class="bi bi-list-ul"></i>
-                  </button>
-                  <ul
-                    class="dropdown-menu dropdown-menu-dark"
-                    id={styles.dropdownlist}>
-                    <li>
-                      <p class="dropdown-item" id={styles.liText}>
-                        Sort
-                      </p>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onClick={funChange}>
-                        Recents
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onClick={funChange}>
-                        Recently Added
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onClick={funChange}>
-                        Alphabetical
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#" onClick={funChange}>
-                        Creator
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className={styles.playListCardContainer}>
-                <div className={styles.playListCard}>
-                  <img
-                    src="Images\music_Icon_image.png"
-                    className={styles.playlistImg}
-                  />
-                  <div className={styles.cardText}>
-                    <p>
-                      Playlist#1 <br />
-                      Playlist<i class="bi bi-dot"></i> <br />
-                      Sarthak-Darade
+      <div className={styles.container}>
+        <div className={styles.columns} id={styles.column1}>
+          <div className={styles.content}>
+            <div className={styles.columnHeading}>
+              <h6>
+                <strong>Your Library</strong>
+                <button
+                  type="button"
+                  class="btn"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Create a playlist">
+                  +
+                </button>
+              </h6>
+            </div>
+            <div className={styles.dropdownContainer}>
+              <h6 id={styles.sortIndicator}>{sortBy}</h6>
+              <div class="dropdown">
+                <button
+                  class="btn btn-secondary"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  id={styles.dropdownButton}>
+                  <i class="bi bi-list-ul"></i>
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-dark"
+                  id={styles.dropdownlist}>
+                  <li>
+                    <p class="dropdown-item" id={styles.liText}>
+                      Sort
                     </p>
-                  </div>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" onClick={funChange}>
+                      Recents
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" onClick={funChange}>
+                      Recently Added
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" onClick={funChange}>
+                      Alphabetical
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#" onClick={funChange}>
+                      Creator
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className={styles.playListCardContainer}>
+              <div className={styles.playListCard}>
+                <img
+                  src="Images\music_Icon_image.png"
+                  className={styles.playlistImg}
+                />
+                <div className={styles.cardText}>
+                  <p>
+                    Playlist#1 <br />
+                    Playlist<i class="bi bi-dot"></i> <br />
+                    Sarthak-Darade
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
-          {/* ----------------------column2 ---------------------------------*/}
-          <div className={styles.columns} id={styles.column2}>
-            <div className={styles.content}>
-              <Routes>
-                <Route path="/" element={<RecommondedSongs />}></Route>
-                <Route path="/explorepremium" element={<ExplorePremium />} />
-                <Route path="/installapp" element={<InstallApp />} />
-                <Route path="*"></Route>
-                <Route path="/music" element={<RecommondedSongs/>}></Route>
-                <Route path="/tracks" element={<Tracks></Tracks>}></Route> 
-              </Routes>
-            
-              <Footer></Footer>
-            </div>
-          </div>
-
-          <div className={styles.columns} id={styles.column3}>
-            <div className={styles.content}></div>
           </div>
         </div>
- 
+        {/* ----------------------column2 ---------------------------------*/}
+        <div className={styles.columns} id={styles.column2}>
+          <div className={styles.content}>
+          <Routes>
+                  <Route path="/" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)} />} />
+                   <Route path="/explorepremium" element={<ExplorePremium />} />
+                    <Route path="/installapp" element={<InstallApp />} />
+                  <Route path="/music" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)} />} />
+                 <Route path="/tracks" element={<Tracks trackName={trackName} />} />
+                  <Route path="*" element={<div>404 Not Found</div>} />
+               </Routes>
+
+
+            <Footer></Footer>
+          </div>
+        </div>
+
+        <div className={styles.columns} id={styles.column3}>
+          <div className={styles.content}></div>
+        </div>
+      </div>
     </>
   );
 }

@@ -5,13 +5,9 @@ function ApiCalls() {
   let [token, setToken] = useState();
   let [trackList, setTracks] = useState([]);
 
-  // const clientId = ""; // client id
-  // const clientSecret = ""; // client Secret
-  // const clientId = "f6c37369929b48f5940aebb09fd23367";
-  // const clientSecret = "e5e0a6cc6f2542f48df6c9031a72b15c";
+  const clientId = ""; // client id
+  const clientSecret = ""; // client Secret
 
-  const clientId = "bb67dff9f47b4a018b86d2219fb6d7a5";
-  const clientSecret = "d1e87675b3f94c93897ee0c003b657a5";
 
   const artistIds = [
     { id: "4YRxDV8wJFPHPTeXepOstw", name: "Arijit Singh" },

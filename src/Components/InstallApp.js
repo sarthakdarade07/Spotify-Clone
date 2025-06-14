@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 
 function InstallApp(props){
+  let navigate=useNavigate();
     function funClose() {
-      props.getInstallAppflag(false);
+      navigate(-1);
     }
 return (
   <>

@@ -1,9 +1,11 @@
-import { useEffect } from 'react';
+import { use, useEffect } from 'react';
 import styles from './ExplorePremium.module.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 function ExplorePremium(props){
+  const navigate=useNavigate();
+  //Navigate(-1) is used to go back to the the previous
     function funClose(){
-        props.setExPremiumClose(false);
+        navigate(-1);
     }
 
     useEffect(()=>{

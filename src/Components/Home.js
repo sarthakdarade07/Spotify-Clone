@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ApiCalls from "./ApiCalls";
-import HomeDisplay from "./HomeDisplay";
 import NavBar from "./NavBar";
 import RecommondedSongs from "./RecommondedSongs";
+import HomeContent from "./HomeContent";
+import TrackContext from "./TrackContext";
+import Tracks from "./Tracks";
 
 function Home(props) {
+  let [trackName, setTrackName] = useState("hi");
+
 
   useEffect(()=>{
     document.body.style.backgroundColor = "black";
@@ -14,11 +18,12 @@ function Home(props) {
   return (
     <>
       {/* Api calls will fech all APIs */}
-      <ApiCalls></ApiCalls>
-      
-      <HomeDisplay></HomeDisplay>
-   
+      {/* <ApiCalls></ApiCalls> */}
 
+      <TrackContext.Provider value={{ trackName, setTrackName }}>
+        <NavBar></NavBar>
+        <HomeContent> </HomeContent>
+      </TrackContext.Provider>
     </>
   );
 }

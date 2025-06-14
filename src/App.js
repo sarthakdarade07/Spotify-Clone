@@ -1,22 +1,25 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./Components/Home";
 import RecommondedSongs from "./Components/RecommondedSongs";
-import InstallApp from "./Components/InstallApp";
+import { useEffect, useState } from "react";
+import Songs from "./Components/Songs";
 
-function App() {
- 
+
+function App(props) {
+
+
+
+
   return (
     <>
-      <Routes>
-        <Route path="/" Component={Home}></Route>
-        <Route path="/songs" element={<RecommondedSongs />}></Route>
-        {/* <Route path="/installapp" Component={InstallApp}></Route>  */}
-        <Route path="*"></Route>
-      </Routes>
+    <Home></Home>
+
+    {/* <Routes>
+      <Route path="/" element={<Home/>}></Route>
+    </Routes> */}
+     
     </>
   );
-
- 
 }
 export default App;

@@ -1,0 +1,26 @@
+.artistDiv{
+    width: 100%;
+ background-image: linear-gradient(#ea9050,#ea9050,black);
+    border-radius: 1%;
+    color: white;
+    border: 0px solid #ea9050 ;
+}
+
+.artistDiv div{
+    /* background-image: linear-gradient( #ea9050,#e88f50,#E1925A,black); */
+    background-color: transparent;
+    border-color: none;
+    color: white;
+    
+}
+.cardImg{
+    height: 80%;
+    margin: auto;
+    margin: 5%;
+    border-radius: 5%;
+    background-image: linear-gradient(top, lightyellow,gray);
+}
+
+.trackTable{
+    background-color: black;
+}

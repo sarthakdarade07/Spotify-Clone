@@ -26,8 +26,8 @@ function RecommondedSongs(props) {
   }
 
   // function to set selected track
-  function sendTrackRequest(albumName, artistNames, imagesLinks) {
-    var obj={albumName:albumName,artistNames:artistNames,imagesLinks:imagesLinks}
+  function sendTrackRequest(albumName,albumId, artistNames, imagesLinks) {
+    var obj={albumName:albumName,albumId:albumId,artistNames:artistNames,imagesLinks:imagesLinks}
     props.getTrackName(obj);
     navigate("/tracks");
   }
@@ -74,8 +74,10 @@ function RecommondedSongs(props) {
       {/* -------------------------------------------cardSlider -------------------------------------- */}
       {albumsData.map((xc, ind) => {
         var containerName = "container" + ind;
+       
         return (
-          <div className={styles.cardSlider} id={ind}>
+         
+          <div className={styles.cardSlider} key={ind}>
             <button
               type="button"
               class="btn btn-dark "
@@ -87,15 +89,16 @@ function RecommondedSongs(props) {
             </button>
             <div className={styles.CardWrapper} id={containerName}>
               <div className={styles.cardContainer}>
-                {albumsData.map((x) => {
+                {albumsData.map((x,index) => {
                   var albumName;
                   var artistNames;
                   var imagesLinks;
+                  var albumId;
                   try {
                     albumName = x.albums[ind].name;
                     artistNames = x.artist;
                     imagesLinks = x.albums[ind].images[0].url;
-
+                    albumId=x.albums[ind].id;
                     return (
                       <>
                         <NavLink>
@@ -103,9 +106,9 @@ function RecommondedSongs(props) {
                             class="card"
                             id={styles.card}
                             onClick={() => {
-                              sendTrackRequest(albumName,artistNames,imagesLinks);
+                              sendTrackRequest(albumName,albumId,artistNames,imagesLinks);
                             }}>
-                            <cardBody className={styles.cardLink}>
+                            <div className={styles.cardLink}>
                               <img
                                 src={imagesLinks}
                                 class="card-img-top"
@@ -115,7 +118,7 @@ function RecommondedSongs(props) {
                                 <p class="card-title">{albumName}</p>
                                 <p class="card-text">{artistNames}</p>
                               </div>
-                            </cardBody>
+                            </div>
                             <button className={styles.cardFloatingPlayBtn}>
                               <i class="fa-solid fa-play"></i>
                             </button>

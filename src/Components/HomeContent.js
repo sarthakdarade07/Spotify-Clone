@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import InstallApp from "./InstallApp";
 import Tracks from "./Tracks";
 
-function HomeContent() {
+function HomeContent(props) {
   let [sortBy, setSortBy] = useState("Recents");
   let [trackName, setTrackName] = useState("hi");
   function funChange(event) {
@@ -16,7 +16,7 @@ function HomeContent() {
     setSortBy(event.target.innerText);
   }
 
-  useEffect(() => {}, []);
+  useEffect(() => {}, [props]);
 
   return (
     <>
@@ -28,7 +28,7 @@ function HomeContent() {
                 <strong>Your Library</strong>
                 <button
                   type="button"
-                  class="btn"
+                  className="btn"
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
                   title="Create a playlist">
@@ -40,7 +40,7 @@ function HomeContent() {
               <h6 id={styles.sortIndicator}>{sortBy}</h6>
               <div class="dropdown">
                 <button
-                  class="btn btn-secondary"
+                  className="btn btn-secondary"
                   type="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -48,7 +48,7 @@ function HomeContent() {
                   <i class="bi bi-list-ul"></i>
                 </button>
                 <ul
-                  class="dropdown-menu dropdown-menu-dark"
+                  className="dropdown-menu dropdown-menu-dark"
                   id={styles.dropdownlist}>
                   <li>
                     <p class="dropdown-item" id={styles.liText}>
@@ -99,7 +99,7 @@ function HomeContent() {
         {/* ----------------------column2 ---------------------------------*/}
         <div className={styles.columns} id={styles.column2}>
           <div className={styles.content}>
-          <Routes>
+                   <Routes>
                   <Route path="/" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)} />} />
                    <Route path="/explorepremium" element={<ExplorePremium />} />
                     <Route path="/installapp" element={<InstallApp />} />
@@ -107,8 +107,6 @@ function HomeContent() {
                  <Route path="/tracks" element={<Tracks trackName={trackName} />} />
                   <Route path="*" element={<div>404 Not Found</div>} />
                </Routes>
-
-
             <Footer></Footer>
           </div>
         </div>

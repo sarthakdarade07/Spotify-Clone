@@ -17,7 +17,7 @@ function Home(props) {
   return (
     <>
       {/* Api calls will fech all APIs */}
-      {/* <ApiCalls></ApiCalls> */}
+      <ApiCalls></ApiCalls>
 
      
         <NavBar></NavBar>

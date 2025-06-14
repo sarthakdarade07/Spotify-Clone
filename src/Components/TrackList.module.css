@@ -4,6 +4,7 @@
     border-radius: 1%;
     color: white;
     border: 0px solid #ea9050 ;
+    cursor: pointer;
 }
 
 .artistDiv div{
@@ -13,8 +14,9 @@
     color: white;
     
 }
-.cardImg{
-    height: 80%;
+.albumImg{
+    max-height: 90%;
+    max-width: 90%;
     margin: auto;
     margin: 5%;
     border-radius: 5%;
@@ -23,4 +25,10 @@
 
 .trackTable{
     background-color: black;
+    cursor: pointer;
+}
+
+.songImg{
+    max-width: 10%;
+    max-height: 10%;
 }

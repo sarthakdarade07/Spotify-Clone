@@ -10,9 +10,7 @@ import { Link } from "react-router-dom";
 
 function NavBar(props) {
 
-  
-  useEffect(() => {
-    
+  useEffect(() => {    
   }, [props]);
   return (
     <>

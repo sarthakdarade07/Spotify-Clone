@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./HomeContent.module.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import RecommondedSongs from "./RecommondedSongs";
@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import { Route, Routes } from "react-router-dom";
 import InstallApp from "./InstallApp";
 import Tracks from "./Tracks";
+import ScrollToTop from "./ScrollToTop";
 
 function HomeContent(props) {
   let [sortBy, setSortBy] = useState("Recents");
@@ -98,15 +99,20 @@ function HomeContent(props) {
         </div>
         {/* ----------------------column2 ---------------------------------*/}
         <div className={styles.columns} id={styles.column2}>
+       
+        <ScrollToTop/>
           <div className={styles.content}>
-                   <Routes>
-                  <Route path="/" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)} />} />
-                   <Route path="/explorepremium" element={<ExplorePremium />} />
+
+                  <Routes>
+                    <Route path="/" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)} />} />
+                    <Route path="/explorepremium" element={<ExplorePremium />} />
                     <Route path="/installapp" element={<InstallApp />} />
-                  <Route path="/music" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)} />} />
-                 <Route path="/tracks" element={<Tracks trackName={trackName} />} />
-                  <Route path="*" element={<div>404 Not Found</div>} />
-               </Routes>
+                    <Route path="/music" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)} />} />
+                    <Route path="/tracks" element={<Tracks trackName={trackName} />} />
+                    <Route path="*" element={<div>404 Not Found</div>} />
+                  </Routes>
+                
+            
             <Footer></Footer>
           </div>
         </div>

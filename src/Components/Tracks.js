@@ -1,57 +1,58 @@
 import { Table } from "react-bootstrap";
 import styles from "./TrackList.module.css";
-import { useContext, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import ScrollToTop from "./ScrollToTop";
 
 function Tracks(props) {
-let [trackList,setTrackList]=useState([]);
-let [track, setTrack] = useState([]);
-// here track is an Object containing the tracks details whatever album is clicked by
-// use from recommentation 
-//trackList containing all tracks
-// props.trackName is object got from recommondation component
+  const [trackList, setTrackList] = useState([]);
+  const [track, setTrack] = useState([]);
+  const [selectedTrack, setSelectedTrack] = useState({});
 
-function searchTrack(list) {
-  try {
-    var tempArr = list.filter((x) => {
-      console.log(x);
-      if (x.album === props.trackName.albumId) {
-        return x;
+  // Update selectedTrack when props.trackName changes
+  useEffect(() => {
+    setSelectedTrack(props.trackName || {});
+  }, [props.trackName]);
+
+  function searchTrack(list, albumId) {
+    try {
+      const tempArr = list.filter((x) => x.album === albumId);
+      if (tempArr.length > 0 && tempArr[0].tracks) {
+        setTrack(tempArr[0].tracks);
+      } else {
+        setTrack([]);
       }
-    });
-    if (tempArr.length > 0 && tempArr[0].tracks) {
-      setTrack(tempArr[0].tracks);
-    } else {
-      setTrack([]);
+    } catch (e) {
+      console.log('error');
     }
-  } catch (e) {
-    console.log('error');
   }
-}
-console.log(track);
 
   useEffect(() => {
-  var list=(JSON.parse(localStorage.getItem("tracks")))
-  setTrackList(list)
-    searchTrack(list); 
+    const list = JSON.parse(localStorage.getItem("tracks")) || [];
+    setTrackList(list);
+    if (props.trackName && props.trackName.albumId) {
+      searchTrack(list, props.trackName.albumId);
+    }
+    window.scrollTo({ top: 0, behavior: "instant" });
   }, [props.trackName]);
 
   return (
     <>
+    <ScrollToTop/>
       <div className={styles.artistDiv}>
-        <div class="card mb-3">
-          <div class="row g-0">
-            <div class="col-md-4">
+        <div className="card mb-3">
+          <div className="row g-0">
+            <div className="col-md-4">
               <img
-                src={props.trackName.imagesLinks}
+                src={selectedTrack.imagesLinks}
                 className={styles.albumImg}
+                alt=""
               />
             </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">Public PlayList</h5>
-                <h1>{props.trackName.albumName}</h1>
+            <div className="col-md-8">
+              <div className="card-body">
+                <h5 className="card-title">Public PlayList</h5>
+                <h1>{selectedTrack.albumName}</h1>
               </div>
             </div>
           </div>
@@ -64,24 +65,19 @@ console.log(track);
             <th>#</th>
             <th>Title</th>
             <th>
-              <i class="bi bi-clock"></i>
+              <i className="bi bi-clock"></i>
             </th>
           </tr>
         </thead>
-        {track.map((x, index) => {
-          try {
-            return (
-              <tbody>
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  {/* <td><img src="Images\music_Icon_image.png" className={styles.songImg}/></td> */}
-                  <td>{x.name}</td>
-                  <td>{(parseInt(x.duration_ms) * 0.00001667).toFixed(2)} mins</td>
-                </tr>
-              </tbody>
-            );
-          } catch (e) {}
-        })}
+        <tbody>
+          {track.map((x, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
+              <td>{x.name}</td>
+              <td>{(parseInt(x.duration_ms) * 0.00001667).toFixed(2)} mins</td>
+            </tr>
+          ))}
+        </tbody>
       </Table>
     </>
   );

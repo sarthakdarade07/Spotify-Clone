@@ -8,16 +8,24 @@ import { Route, Routes } from "react-router-dom";
 import InstallApp from "./InstallApp";
 import Tracks from "./Tracks";
 import ScrollToTop from "./ScrollToTop";
+import CurrPlayingSong from "./CurrPlayingSong";
 
 function HomeContent(props) {
   let [sortBy, setSortBy] = useState("Recents");
   let [trackName, setTrackName] = useState("hi");
+  //song is representing currunt playing song id
+  let [song,setSong]=useState();
+
+
+  
   function funChange(event) {
-    console.log(event.target.innerText);
     setSortBy(event.target.innerText);
   }
 
-  useEffect(() => {}, [props]);
+
+
+
+  useEffect(() => {}, [props,song]);
 
   return (
     <>
@@ -100,15 +108,15 @@ function HomeContent(props) {
         {/* ----------------------column2 ---------------------------------*/}
         <div className={styles.columns} id={styles.column2}>
        
-        <ScrollToTop/>
+    
           <div className={styles.content}>
-
+                  <ScrollToTop/>
                   <Routes>
                     <Route path="/" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)} />} />
                     <Route path="/explorepremium" element={<ExplorePremium />} />
                     <Route path="/installapp" element={<InstallApp />} />
                     <Route path="/music" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)} />} />
-                    <Route path="/tracks" element={<Tracks trackName={trackName} />} />
+                    <Route path="/tracks" element={<Tracks trackName={trackName} getSong={(param)=>{setSong(param)}} />} />
                     <Route path="*" element={<div>404 Not Found</div>} />
                   </Routes>
                 
@@ -117,7 +125,8 @@ function HomeContent(props) {
           </div>
         </div>
 
-        <div className={styles.columns} id={styles.column3}>
+        <div className={styles.columns}>
+            {song && <CurrPlayingSong song={song}/>}
           <div className={styles.content}></div>
         </div>
       </div>

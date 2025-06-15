@@ -4,12 +4,16 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import styles from "./NavBar.module.css";
 import { use, useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { click } from "@testing-library/user-event/dist/click";
 
 
 
 function NavBar(props) {
-
+  const navigate=useNavigate();
+  function clickInstallApp(){
+    navigate("/installapp")
+  }
   useEffect(() => {    
   }, [props]);
   return (
@@ -75,11 +79,11 @@ function NavBar(props) {
                 </button>
               </Link>
               <Nav.Link
-                href="/installapp"
                 id={styles.spanTxt}
                 data-toggle="tooltip"
                 data-placement="bottom"
-                title="Install Now">
+                title="Install Now"
+                onClick={clickInstallApp}>
                 <i className="bi bi-file-arrow-down"></i>
                 <span>Install App</span>
               </Nav.Link>

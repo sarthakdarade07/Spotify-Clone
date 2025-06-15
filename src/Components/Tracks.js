@@ -1,5 +1,5 @@
 import { Table } from "react-bootstrap";
-import styles from "./TrackList.module.css";
+import styles from "./Tracks.module.css";
 import { useEffect, useState } from "react";
 import ScrollToTop from "./ScrollToTop";
 
@@ -23,13 +23,21 @@ function Tracks(props) {
   }
 
   // Handle song play
-  function playMusic(musicId,musicName) {
-    var obj=[{
-      musicId:musicId,
-      musicName:musicName,
-    }]
+  function playMusic(x) {
+    var obj = [x];
     props.getSong(obj);
   }
+
+  //use to calculate time
+  const calTime = (sec) => {
+    sec=sec*0.001;
+    const mins = Math.floor(sec / 60);
+    const returnedMins = mins < 10 ? `0${mins}` : `${mins}`;
+    const seconds = Math.floor(sec % 60);
+    const returnedseconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+
+    return `${returnedMins}:${returnedseconds}`;
+  };
 
   // Main logic to persist selectedTrack on refresh
   useEffect(() => {
@@ -49,7 +57,6 @@ function Tracks(props) {
         searchTrack(list, savedTrack.albumId);
       }
     }
-
     // Scroll to top
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [props]);
@@ -92,11 +99,11 @@ function Tracks(props) {
             <tr
               key={index}
               onClick={() => {
-                playMusic(x.id,x.name);
+                playMusic(x);
               }}>
               <td>{index + 1}</td>
               <td>{x.name}</td>
-              <td>{(parseInt(x.duration_ms) * 0.00001667).toFixed(2)} mins</td>
+              <td>{calTime(x.duration_ms)} mins</td>
             </tr>
           ))}
         </tbody>

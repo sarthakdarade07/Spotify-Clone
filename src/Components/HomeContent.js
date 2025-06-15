@@ -12,7 +12,7 @@ import CurrPlayingSong from "./CurrPlayingSong";
 
 function HomeContent(props) {
   let [sortBy, setSortBy] = useState("Recents");
-  let [trackName, setTrackName] = useState("hi");
+  let [trackName, setTrackName] = useState("");
   //song is representing currunt playing song id
   let [song,setSong]=useState();
 
@@ -119,14 +119,12 @@ function HomeContent(props) {
                     <Route path="/tracks" element={<Tracks trackName={trackName} getSong={(param)=>{setSong(param)}} />} />
                     <Route path="*" element={<div>404 Not Found</div>} />
                   </Routes>
-                
-            
             <Footer></Footer>
           </div>
         </div>
 
         <div className={styles.columns}>
-            {song && <CurrPlayingSong song={song}/>}
+            {song && <CurrPlayingSong song={song} getCurrSong={(obj)=>{props.getPlayingSong(obj)}}/>}
           <div className={styles.content}></div>
         </div>
       </div>

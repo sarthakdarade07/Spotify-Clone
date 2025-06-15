@@ -4,15 +4,16 @@ import NavBar from "./NavBar";
 import RecommondedSongs from "./RecommondedSongs";
 import HomeContent from "./HomeContent";
 import Tracks from "./Tracks";
+import FooterMusicContoller from "./FooterMusicController";
 
 function Home(props) {
-
+ let [playingSong,setPlayingSong]=useState();
 
 
   useEffect(()=>{
     document.body.style.backgroundColor = "black";
     document.body.style.color = "white"; // optional
-  },[props])
+  },[props,playingSong])
 
   return (
     <>
@@ -21,8 +22,8 @@ function Home(props) {
 
      
         <NavBar></NavBar>
-        <HomeContent> </HomeContent>
- 
+        <HomeContent getPlayingSong={(obj)=>{{setPlayingSong(obj)}}}> </HomeContent>
+       {playingSong && <FooterMusicContoller playingSong={playingSong}/> }
     </>
   );
 }

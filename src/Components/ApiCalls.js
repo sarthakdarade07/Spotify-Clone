@@ -8,13 +8,15 @@ function ApiCalls() {
   // const clientId = ""; // client id
   // const clientSecret = ""; // client Secret
 
+
+
   const artistIds = [
     { id: "4YRxDV8wJFPHPTeXepOstw", name: "Arijit Singh" },
     { id: "0oOet2f43PA68X5RxKobEy", name: "Shreya Ghoshal" },
     { id: "1mYsTxnqsietFxj1OgoGbG", name: "Armaan Malik" },
     { id: "5f4QpKfy7ptCHwTqspnSJI", name: "Neha Kakkar" },
     { id: "4fEkbug6kZzzJ8eYX6Kbbp", name: "Sonu Nigam" },
-    { id: "6eUKZXaKkcviH0Ku9w2n3V", name: "Ed-Sheeran" }
+    { id: "6eUKZXaKkcviH0Ku9w2n3V", name: "Ed-Sheeran" },
   ];
 
   async function getAccessToken() {
@@ -118,7 +120,7 @@ function ApiCalls() {
     };
 
     fetchData();
-    localStorage.setItem("SongList",JSON.stringify(songList));
+    
   }, []);
 }
 

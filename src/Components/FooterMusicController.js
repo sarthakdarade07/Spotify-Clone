@@ -1,16 +1,36 @@
 import styles from "./FooterMusicController.module.css";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, use } from "react";
 
 export default function FooterMusicContoller({ playingSong }) {
   //states
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [repeat,setRepeat] =useState(false);
+  let [repeatBtnStyle ,setRepeatStyle]=useState();
 
    //refrences
   const audioPlayer = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
+  
+  function  repeatToggle(){
+    let val=repeat;
+    setRepeat(!val);
+     var temp = {};
+    if(val==false){
+      temp = {
+        color: "grey",
+      };
+    }
+    else{
+      temp = {
+        color: "rgb(61, 61, 61)",
+      };
+    }
+      setRepeatStyle(temp);
+      audioPlayer.current.loop=!audioPlayer.current.loop;
+  }
 
   const togglePlayPause = () => {
     const prevValue = isPlaying;
@@ -80,6 +100,8 @@ export default function FooterMusicContoller({ playingSong }) {
     }
   }, [playingSong]);
 
+  
+
   // to update CSS range width
   useEffect(() => {
     if (progressBar.current && duration > 0) {
@@ -88,6 +110,9 @@ export default function FooterMusicContoller({ playingSong }) {
         "--seek-before-width",
         `${percent}%`
       );
+    }
+    if(audioPlayer.current.ended){
+      setIsPlaying(false);
     }
   }, [currentTime, duration]);
 
@@ -120,7 +145,7 @@ export default function FooterMusicContoller({ playingSong }) {
           <i className="fa-solid fa-forward-step"></i>
         </button>
 
-        <button className={styles.repeatBtn}>
+        <button className={styles.repeatBtn} onClick={repeatToggle} style={repeatBtnStyle}>
           <i className="fa-solid fa-repeat"></i>
         </button>
 

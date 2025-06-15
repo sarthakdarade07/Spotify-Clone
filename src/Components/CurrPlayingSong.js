@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./CurrPlayingSong.module.css"
 
 function CurrPlayingSong(props) {
   const [currSong, setCurrSong] = useState([]);
@@ -16,12 +17,11 @@ function CurrPlayingSong(props) {
     },
   ];
 
-  function setSong(tempSongId) {
+  function setSong(tempSong) {
     try {
-      const tempArr = songList.filter((x) => x.songId === tempSongId);
+      const tempArr = songList.filter((x) => x.songId === tempSong[0].musicId);
       if (tempArr.length > 0) {
         setCurrSong(tempArr);
-        console.log("Setting song to:", tempArr); // Log the actual new value
       } else {
         setCurrSong([]);
       }
@@ -39,12 +39,13 @@ function CurrPlayingSong(props) {
   return (
     <>
       {currSong.length > 0 && currSong[0] && (
-        <div key={currSong[0].songId}>
-          <img src={currSong[0].songImg} alt="Current Song"/>
+        <div key={currSong[0].songId} className={styles.musicDiv}>
+          <img src={currSong[0].songImg} alt="Current Song" className={styles.musicImg}/>
           <audio controls>
             <source src={currSong[0].songPath} />
             Your browser does not support the audio element.
           </audio>
+         <marquee><h5>{props.song[0].musicName}</h5></marquee>
         </div>
       )}
     </>

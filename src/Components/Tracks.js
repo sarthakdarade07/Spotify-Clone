@@ -23,8 +23,12 @@ function Tracks(props) {
   }
 
   // Handle song play
-  function playMusic(musicId) {
-    props.getSong(musicId);
+  function playMusic(musicId,musicName) {
+    var obj=[{
+      musicId:musicId,
+      musicName:musicName,
+    }]
+    props.getSong(obj);
   }
 
   // Main logic to persist selectedTrack on refresh
@@ -88,7 +92,7 @@ function Tracks(props) {
             <tr
               key={index}
               onClick={() => {
-                playMusic(x.id);
+                playMusic(x.id,x.name);
               }}>
               <td>{index + 1}</td>
               <td>{x.name}</td>

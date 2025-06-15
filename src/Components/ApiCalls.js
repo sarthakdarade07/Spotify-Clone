@@ -8,7 +8,8 @@ function ApiCalls() {
   // const clientId = ""; // client id
   // const clientSecret = ""; // client Secret
 
-
+  const clientId = "f6c37369929b48f5940aebb09fd23367";
+  const clientSecret = "e5e0a6cc6f2542f48df6c9031a72b15c";
 
   const artistIds = [
     { id: "4YRxDV8wJFPHPTeXepOstw", name: "Arijit Singh" },

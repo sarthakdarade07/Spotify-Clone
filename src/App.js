@@ -13,12 +13,7 @@ function App(props) {
 
   return (
     <>
-    <Home></Home>
-
-    {/* <Routes>
-      <Route path="/" element={<Home/>}></Route>
-    </Routes> */}
-     
+    <Home></Home>     
     </>
   );
 }

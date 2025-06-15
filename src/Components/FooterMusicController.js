@@ -2,10 +2,12 @@ import styles from "./FooterMusicController.module.css";
 import { useState, useRef, useEffect } from "react";
 
 export default function FooterMusicContoller({ playingSong }) {
+  //states
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
 
+   //refrences
   const audioPlayer = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
@@ -78,7 +80,7 @@ export default function FooterMusicContoller({ playingSong }) {
     }
   }, [playingSong]);
 
-  // Update CSS range width
+  // to update CSS range width
   useEffect(() => {
     if (progressBar.current && duration > 0) {
       const percent = (currentTime / duration) * 100;

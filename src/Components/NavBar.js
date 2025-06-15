@@ -11,8 +11,13 @@ import { click } from "@testing-library/user-event/dist/click";
 
 function NavBar(props) {
   const navigate=useNavigate();
+
   function clickInstallApp(){
     navigate("/installapp")
+  }
+
+  function goToHome(){
+    navigate("/");
   }
   useEffect(() => {    
   }, [props]);
@@ -30,6 +35,7 @@ function NavBar(props) {
             id={styles.spotifyIcon}></i>
         </a>
         <Container fluid>
+
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -42,7 +48,9 @@ function NavBar(props) {
                 id={styles.homeIcon}
                 data-toggle="tooltip"
                 data-placement="bottom"
-                title="Home">
+                title="Home"
+                onClick={goToHome}
+                >
                 <i className="bi bi-house-door-fill text-white"></i>
               </button>
 

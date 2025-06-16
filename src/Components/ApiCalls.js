@@ -1,14 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 
 function ApiCalls() {
-  let [albumList, setAlbumList] = useState([]);
-  let [token, setToken] = useState();
-  let [trackList, setTracks] = useState([]);
-
   // const clientId = ""; // client id
   // const clientSecret = ""; // client Secret
 
- 
+
+
+
 
   const artistIds = [
     { id: "4YRxDV8wJFPHPTeXepOstw", name: "Arijit Singh" },
@@ -31,7 +29,6 @@ function ApiCalls() {
 
     let result = await response.json();
     var tkn = result.access_token;
-    setToken(tkn);
     return tkn;
   }
 
@@ -83,8 +80,6 @@ function ApiCalls() {
     const fetchData = async () => {
       try {
         const accessToken = await getAccessToken();
-        setToken(accessToken);
-
         // Parallel fetch of albums
         const allAlbums = await Promise.all(
           artistIds.map((artist) =>
@@ -96,8 +91,9 @@ function ApiCalls() {
             )
           )
         );
-        setAlbumList(allAlbums);
         localStorage.setItem("albums", JSON.stringify(allAlbums));
+
+      
 
         // Parallel fetch of tracks from all albums
         const allTracks = await Promise.all(
@@ -112,7 +108,7 @@ function ApiCalls() {
             )
           )
         );
-        setTracks(allTracks);
+
         localStorage.setItem("tracks", JSON.stringify(allTracks));
       } catch (err) {
         console.error("Error fetching:", err);
@@ -120,7 +116,6 @@ function ApiCalls() {
     };
 
     fetchData();
-    
   }, []);
 }
 

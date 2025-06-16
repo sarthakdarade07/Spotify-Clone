@@ -83,6 +83,7 @@ function RecommondedSongs(props) {
                   var imagesLinks;
                   var albumId;
                   try {
+                    
                     albumName = x.albums[ind].name;
                     artistNames = x.artist;
                     imagesLinks = x.albums[ind].images[0].url;

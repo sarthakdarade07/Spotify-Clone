@@ -40,7 +40,6 @@ function CurrPlayingSong(props) {
   useEffect(() => {
     if (props.song) {
       setSong(props.song);
-      console.log(props.song[0].artists[0].name);
     }
   }, [props.song]);
 
@@ -61,8 +60,8 @@ function CurrPlayingSong(props) {
             <li>Artists</li>
             <hr/>
             {
-            props.song[0].artists.map((x) => {
-              return <li>{x.name}</li>; 
+            props.song[0].artists.map((x,ind) => {
+              return <li key={ind}>{x.name}</li>; 
             })}
           </ul>
         </div>

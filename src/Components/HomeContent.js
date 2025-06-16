@@ -58,7 +58,7 @@ function HomeContent(props) {
 
     }
 
-    
+
   },[song])
   
 
@@ -89,7 +89,7 @@ function HomeContent(props) {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                   id={styles.dropdownButton}>
-                  <i class="bi bi-list-ul"></i>
+                  <i className="bi bi-list-ul"></i>
                 </button>
                 <ul
                   className="dropdown-menu dropdown-menu-dark"

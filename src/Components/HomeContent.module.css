@@ -7,13 +7,12 @@
 
 .columns{
     padding: 2vw; 
-    max-height: 75vh;
-    min-height: 75vh;
+    height: 75vh;
     width: 20%;
     margin: 0.2vw;
     background-color: #121212;
     border-radius: 1vw;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: auto;
 }
 
@@ -26,7 +25,7 @@
 #column2{
     width: 60%;
     background-color:#121212;
-    overflow-x: hidden;
+    overflow-x: auto;
 }
 
 #column2::-webkit-scrollbar{
@@ -34,6 +33,7 @@
 }
 
 #column2::-webkit-scrollbar-thumb{
+    --thumb-pos:10;
     background-color: #303030;
 }
 
@@ -46,7 +46,6 @@
 
 .columnHeading{
 max-width: 100%;
-
 height: 10%;
 }
 

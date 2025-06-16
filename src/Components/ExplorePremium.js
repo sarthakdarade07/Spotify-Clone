@@ -1,16 +1,15 @@
-import { use, useEffect } from 'react';
+import {useEffect } from 'react';
 import styles from './ExplorePremium.module.css'
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
+
 function ExplorePremium(props){
+
   const navigate=useNavigate();
   //Navigate(-1) is used to go back to the the previous
     function funClose(){
         navigate(-1);
     }
 
-    useEffect(()=>{
-
-    },[props])
     return (
       <>
         <div style={{ marginLeft: "90%" }}>
@@ -29,7 +28,7 @@ function ExplorePremium(props){
         </div>
         {/*--------------------------- premimum plan Image ----------------------------------*/}
         <div className={styles.premimumAddDiv}>
-          <img src="Images\PremiumPlanImg.png" className={styles.HeaderImg} />
+          <img src="Images\PremiumPlanImg.png" className={styles.HeaderImg} alt='Image Not Found' />
           <h2 className={styles.Headers}>Affordable plans for any situation</h2>
           <p>
             Choose a Premium plan and listen to ad-free music without limits on
@@ -57,7 +56,7 @@ function ExplorePremium(props){
           </ul>
         </div>
 
-        {/*--------------------------- Prenium Plan Cards ----------------------------------*/}
+        {/*--------------------------- Premium Plan Cards ----------------------------------*/}
         <div className={styles.planCards}>
           <div class="card text-bg-dark mb-3" style={{ maxWidth: "18rem" }}>
             <div

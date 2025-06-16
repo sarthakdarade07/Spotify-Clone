@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styles from "./HomeContent.module.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import RecommondedSongs from "./RecommondedSongs";
 import ExplorePremium from "./ExplorePremium";
 import Footer from "./Footer";
@@ -13,24 +12,60 @@ import CurrPlayingSong from "./CurrPlayingSong";
 function HomeContent(props) {
   let [sortBy, setSortBy] = useState("Recents");
   let [trackName, setTrackName] = useState("");
-  //song is representing currunt playing song id
-  let [song,setSong]=useState();
-
-
+  //song is representing currunt playing song
+  let [song, setSong] = useState();
+   let [styleCol,setStyleCol]=useState();
+   let [styleCol2, setStyleCol2] = useState();
+   let [styleCol3, setStyleCol3] = useState();
   
+ 
   function funChange(event) {
     setSortBy(event.target.innerText);
   }
 
+  useEffect(()=>{
+     if(!song){
+      let styleColtemp = {
+         height:85+"vh",
+      };
+      setStyleCol(styleColtemp);
+     let  styleCol2temp={
+        width:100+"%",
+        height:85+"vh",
+      }
+      setStyleCol2(styleCol2temp);
 
+     let styleCol3temp={
+        display:'none',
+      }
+      setStyleCol3(styleCol3temp);
+    }else{
 
+      let styleColtemp = {
+        height: 75 + "vh",
+      };
+      setStyleCol(styleColtemp);
+      let styleCol2temp = {
+        width: 60 + "%",
+        height: 75 + "vh",
+      };
+      setStyleCol2(styleCol2temp);
 
-  useEffect(() => {}, [props,song]);
+      let styleCol3temp = {
+        display:"flex",
+      };
+      setStyleCol3(styleCol3temp);
+
+    }
+
+    
+  },[song])
+  
 
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.columns} id={styles.column1}>
+        <div className={styles.columns} style={styleCol}>
           <div className={styles.content}>
             <div className={styles.columnHeading}>
               <h6>
@@ -106,25 +141,54 @@ function HomeContent(props) {
           </div>
         </div>
         {/* ----------------------column2 ---------------------------------*/}
-        <div className={styles.columns} id={styles.column2}>
-       
-    
+        <div className={styles.columns} id={styles.column2} style={styleCol2}>
+          <ScrollToTop />
           <div className={styles.content}>
-                  <ScrollToTop/>
-                  <Routes>
-                    <Route path="/" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)} />} />
-                    <Route path="/explorepremium" element={<ExplorePremium />} />
-                    <Route path="/installapp" element={<InstallApp />} />
-                    <Route path="/music" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)} />} />
-                    <Route path="/tracks" element={<Tracks trackName={trackName} getSong={(param)=>{setSong(param)}} />} />
-                    <Route path="*" element={<div>404 Not Found</div>} />
-                  </Routes>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <RecommondedSongs
+                    getTrackName={(name) => setTrackName(name)}
+                  />
+                }
+              />
+              <Route path="/explorepremium" element={<ExplorePremium />} />
+              <Route path="/installapp" element={<InstallApp />} />
+              <Route
+                path="/music"
+                element={
+                  <RecommondedSongs
+                    getTrackName={(name) => setTrackName(name)}
+                  />
+                }
+              />
+              <Route
+                path="/tracks"
+                element={
+                  <Tracks
+                    trackName={trackName}
+                    getSong={(param) => {
+                      setSong(param);
+                    }}
+                  />
+                }
+              />
+              <Route path="*" element={<div>404 Not Found</div>} />
+            </Routes>
             <Footer></Footer>
           </div>
         </div>
-
-        <div className={styles.columns}>
-            {song && <CurrPlayingSong song={song} getCurrSong={(obj)=>{props.getPlayingSong(obj)}}/>}
+        {/* ---------------------------------------column3------------------------------------- */}
+        <div className={styles.columns} style={styleCol3}>
+          {song && (
+            <CurrPlayingSong
+              song={song}
+              getCurrSong={(obj) => {
+                props.getPlayingSong(obj);
+              }}
+            />
+          )}
           <div className={styles.content}></div>
         </div>
       </div>

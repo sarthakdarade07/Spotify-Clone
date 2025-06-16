@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./HomeContent.module.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link, useNavigate } from "react-router-dom";
@@ -55,18 +55,6 @@ function RecommondedSongs(props) {
           PodCasts
         </button>
         <div style={{ marginLeft: "60%", zIndex: "2000" }}>
-          {/* --------------it has to update------------------- */}
-          {/* <Link to="/songs">
-            <button
-              type="submit"
-              class="btn btn-dark"
-              style={{
-                position: "fixed",
-                borderRadius: "50%",
-              }}>
-              <i class="bi bi-arrows-fullscreen"></i>
-            </button>
-          </Link> */}
         </div>
       </div>
       <h4 className={styles.reomandationHeader}>Popular Albums</h4>

@@ -53,10 +53,7 @@ function CurrPlayingSong(props) {
             alt="Current Song"
             className={styles.musicImg}
           />
-          {/* <audio controls >
-            <source src={currSong[0].songPath} />
-            Your browser does not support the audio element.
-          </audio> */}
+        
           <marquee>
             <h5>{props.song[0].name}</h5>
           </marquee>

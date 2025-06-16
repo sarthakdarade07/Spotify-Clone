@@ -22,7 +22,7 @@ return (
     </div>
     {/*----------------------- DownLoad App  Image --------------------------------*/}
     <img
-      src="Images\Install_app_Img.png"
+      src="Images\Install_app_Img.png" alt="img not found"
       style={{
         height: "100%",
         width: "100%",

@@ -1,5 +1,5 @@
 import styles from "./FooterMusicController.module.css";
-import { useState, useRef, useEffect, use } from "react";
+import { useState, useRef, useEffect} from "react";
 
 export default function FooterMusicContoller({ playingSong }) {
   //states

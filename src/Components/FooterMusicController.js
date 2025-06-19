@@ -125,6 +125,7 @@ export default function FooterMusicContoller({ playingSong }) {
       </audio>
 
       <div className={styles.musicControllerDiv}>
+        <img src={playingSong[0].songImg} className={styles.songImg}></img>
         <button className={styles.shuffleBtn}>
           <i className="fa-solid fa-shuffle"></i>
         </button>
@@ -145,7 +146,10 @@ export default function FooterMusicContoller({ playingSong }) {
           <i className="fa-solid fa-forward-step"></i>
         </button>
 
-        <button className={styles.repeatBtn} onClick={repeatToggle} style={repeatBtnStyle}>
+        <button
+          className={styles.repeatBtn}
+          onClick={repeatToggle}
+          style={repeatBtnStyle}>
           <i className="fa-solid fa-repeat"></i>
         </button>
 

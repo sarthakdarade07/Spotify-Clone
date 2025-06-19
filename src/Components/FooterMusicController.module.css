@@ -1,3 +1,27 @@
+.songImg{
+    width: 4%;
+    height: 80%;
+    margin-left: -10em;
+    margin-right: 15em;
+    border-radius: 50%;
+
+    animation: rotate 10s ease-in-out 0s infinite;
+    
+}
+
+@keyframes rotate {
+    from{
+        transform: rotate(0deg);
+        
+    }
+    to{
+        transform: rotate(360deg);
+    }
+    
+}
+
+
+
 .musicControllerDiv{
     height: 10vh;
     width: 100%;
@@ -5,6 +29,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .playPauseBtn{
@@ -98,3 +123,4 @@ margin-right: 1%;
     background-color: var(--seletedKnobby);
 
 }
+

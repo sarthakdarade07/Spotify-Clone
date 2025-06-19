@@ -39,7 +39,7 @@ function Tracks(props) {
     return `${returnedMins}:${returnedseconds}`;
   };
 
-  // Main logic to persist selectedTrack on refresh
+  //  to persist selectedTrack on refresh
   useEffect(() => {
     const list = JSON.parse(localStorage.getItem("tracks")) || [];
     setTrackList(list);

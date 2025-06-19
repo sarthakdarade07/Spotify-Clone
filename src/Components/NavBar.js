@@ -44,7 +44,6 @@ function NavBar(props) {
               navbarScroll>
               <button
                 type="button"
-                className="btn btn-light"
                 id={styles.homeIcon}
                 data-toggle="tooltip"
                 data-placement="bottom"

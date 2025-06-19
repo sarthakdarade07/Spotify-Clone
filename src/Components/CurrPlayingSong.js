@@ -26,7 +26,7 @@ function CurrPlayingSong(props) {
   ];
 
   //function to match path and image with selected song
-  function setSong(tempSong) {
+  function findSong(tempSong) {
     try {
       const tempArr = songList.filter((x) => x.songId === tempSong[0].id);
      //fiter selected song from given songlist
@@ -49,13 +49,13 @@ function CurrPlayingSong(props) {
 
   useEffect(() => {
     if (props.song) {
-      setSong(props.song);
+      findSong(props.song);
     }
   }, [props.song]);
 
   return (
     <>
-      {currSong.length > 0 && currSong[0] && (
+      {currSong && currSong[0] && (
         <div key={currSong[0].songId} className={styles.musicDiv}>
           <img
             src={currSong[0].songImg}

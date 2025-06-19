@@ -12,6 +12,8 @@ function Home(props) {
     document.body.style.color = "white"; // optional
   }, [props, playingSong]);
 
+
+
   return (
     <>
       {/* Api calls will fech all APIs */}

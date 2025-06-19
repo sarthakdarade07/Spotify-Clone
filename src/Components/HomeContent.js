@@ -3,25 +3,33 @@ import styles from "./HomeContent.module.css";
 import RecommondedSongs from "./RecommondedSongs";
 import ExplorePremium from "./ExplorePremium";
 import Footer from "./Footer";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import InstallApp from "./InstallApp";
 import Tracks from "./Tracks";
 import ScrollToTop from "./ScrollToTop";
 import CurrPlayingSong from "./CurrPlayingSong";
+import FavouriteList from "./FavouriteList";
+
 
 function HomeContent(props) {
   let [sortBy, setSortBy] = useState("Recents");
   let [trackName, setTrackName] = useState("");
+ 
   //song is representing currunt playing song
   let [song, setSong] = useState();
    let [styleCol,setStyleCol]=useState();
    let [styleCol2, setStyleCol2] = useState();
    let [styleCol3, setStyleCol3] = useState();
+   
   
+   //navigate
+  let navigate=useNavigate();
  
   function funChange(event) {
     setSortBy(event.target.innerText);
   }
+
+ 
 
   useEffect(()=>{
      if(!song){
@@ -123,7 +131,7 @@ function HomeContent(props) {
               </div>
             </div>
 
-            <div className={styles.playListCardContainer}>
+            <div className={styles.playListCardContainer} onClick={()=>{navigate("/favourites")}}>
               <div className={styles.playListCard}>
                 <img
                   src="Images\music_Icon_image.png"
@@ -131,12 +139,11 @@ function HomeContent(props) {
                 />
                 <div className={styles.cardText}>
                   <p>
-                    Playlist#1 <br />
-                    Playlist<i class="bi bi-dot"></i> <br />
-                    Sarthak-Darade
+                    Favourites <i class="bi bi-bookmark-heart-fill"></i>
                   </p>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -145,35 +152,12 @@ function HomeContent(props) {
           <ScrollToTop />
           <div className={styles.content}>
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <RecommondedSongs
-                    getTrackName={(name) => setTrackName(name)}
-                  />
-                }
-              />
+              <Route path="/" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)}/>}/>
               <Route path="/explorepremium" element={<ExplorePremium />} />
               <Route path="/installapp" element={<InstallApp />} />
-              <Route
-                path="/music"
-                element={
-                  <RecommondedSongs
-                    getTrackName={(name) => setTrackName(name)}
-                  />
-                }
-              />
-              <Route
-                path="/tracks"
-                element={
-                  <Tracks
-                    trackName={trackName}
-                    getSong={(param) => {
-                      setSong(param);
-                    }}
-                  />
-                }
-              />
+              <Route path="/music" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)}/>}/>
+              <Route path="/tracks" element={<Tracks trackName={trackName} getSong={(param) => {setSong(param)}}/>}/>
+              <Route path="/favourites" element={<FavouriteList getSong={(param) => {setSong(param)}}/>}></Route>
               <Route path="*" element={<div>404 Not Found</div>} />
             </Routes>
             <Footer></Footer>

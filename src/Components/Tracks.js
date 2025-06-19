@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";
+import { Dropdown, Table } from "react-bootstrap";
 import styles from "./Tracks.module.css";
 import { useEffect, useState } from "react";
 import ScrollToTop from "./ScrollToTop";
@@ -7,6 +7,9 @@ function Tracks(props) {
   const [trackList, setTrackList] = useState([]);
   const [track, setTrack] = useState([]);
   const [selectedTrack, setSelectedTrack] = useState({});
+  //it is set when favList req is sent
+  const [renderFlag,setRenderFlag]=useState(false);
+  const [favListFlagFlag, setFavListFlag] = useState(false);
 
   // Filter and set tracks based on album ID
   function searchTrack(list, albumId) {
@@ -30,14 +33,51 @@ function Tracks(props) {
 
   //use to calculate time
   const calTime = (sec) => {
-    sec=sec*0.001;
+    sec = sec * 0.001;
     const mins = Math.floor(sec / 60);
     const returnedMins = mins < 10 ? `0${mins}` : `${mins}`;
     const seconds = Math.floor(sec % 60);
     const returnedseconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-
     return `${returnedMins}:${returnedseconds}`;
   };
+
+  //function is used to add track to favourites
+  function funAddFav(x) {
+    let favTracksArr=[];
+    
+    if(localStorage.getItem("favList")){
+      favTracksArr=JSON.parse(localStorage.getItem("favList"));
+    }
+   favTracksArr = favTracksArr.filter((i) => {
+     if (i.id != x.id) {
+       return i;
+     }
+   });
+    favTracksArr.push(x);
+    alert("Song Added to Favourites")
+    localStorage.setItem("favList",JSON.stringify(favTracksArr));
+    
+  }
+
+  //remove track from fav list
+  function funRemoveFromFav(x) {
+    let favTracksArr = [];
+
+    if (localStorage.getItem("favList")) {
+      favTracksArr = JSON.parse(localStorage.getItem("favList"));
+    }
+    favTracksArr = favTracksArr.filter((i) => {
+      if (i.id != x.id) {
+        return i;
+      }
+    });
+    
+    localStorage.setItem("favList", JSON.stringify(favTracksArr));
+    setRenderFlag(!renderFlag);
+    alert("Song Removed from favourites");
+    
+  }
+
 
   //  to persist selectedTrack on refresh
   useEffect(() => {
@@ -57,9 +97,37 @@ function Tracks(props) {
         searchTrack(list, savedTrack.albumId);
       }
     }
+
+    //it will set track and selected tract to favList
+    if (props.favListFlag == true) {
+      let favTracksArr = [];
+      let tempArr = []; //it will have fav list title and image
+      if (localStorage.getItem("favList")) {
+        favTracksArr = JSON.parse(localStorage.getItem("favList"));
+      }
+
+      
+      tempArr = {
+        albumId: "none",
+        albumName: "Favourite PlayList",
+        artistNames: "Sarthak Darade",
+        imagesLinks: "Images/Fav_List_Img.png",
+      };
+
+      setSelectedTrack(tempArr);
+      setTrack(favTracksArr);
+      console.log(selectedTrack);
+    }
+
     // Scroll to top
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  }, [props]);
+
+    return () => {
+      setFavListFlag(false);
+    };
+  }, [props, renderFlag]);
+
+  
 
   return (
     <>
@@ -71,7 +139,6 @@ function Tracks(props) {
               <img
                 src={selectedTrack.imagesLinks}
                 className={styles.albumImg}
-                alt="Album"
               />
             </div>
             <div className="col-md-8">
@@ -86,24 +153,61 @@ function Tracks(props) {
 
       <Table variant="dark">
         <thead>
-          <tr>
+          <tr style={{ width: "100%" }}>
+            <th></th>
             <th>#</th>
             <th>Title</th>
+            <th></th>
             <th>
               <i className="bi bi-clock"></i>
             </th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {track.map((x, index) => (
-            <tr
-              key={index}
-              onClick={() => {
-                playMusic(x);
-              }}>
+            <tr key={index}>
+              <th>
+                <button
+                  onClick={() => {
+                    playMusic(x);
+                  }}
+                  className={styles.btnPlay}>
+                  <i class="bi bi-play-fill" tooltip="play"></i>
+                </button>
+              </th>
               <td>{index + 1}</td>
               <td>{x.name}</td>
-              <td>{calTime(x.duration_ms)} mins</td>
+              <th>
+                <button
+                  className={styles.addBtn}
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Add to favourites"
+                  onClick={() => {
+                    funAddFav(x);
+                  }}>
+                  <i class="bi bi-plus-circle"></i>
+                </button>
+              </th>
+              <td>{calTime(x.duration_ms)}</td>
+              <th>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant="dark">
+                    <i class="bi bi-three-dots-vertical"></i>
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu variant="dark">
+                    <Dropdown.Item
+                      onClick={() => {
+                        funRemoveFromFav(x);
+                      }}>
+                      Remove from Favourites
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </th>
             </tr>
           ))}
         </tbody>

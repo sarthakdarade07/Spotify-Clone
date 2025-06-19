@@ -1,8 +1,8 @@
 .artistDiv{
     width: 100%;
- background-image: linear-gradient(#ea9050,#ea9050,black);
+ background-image: linear-gradient(red,red,black);
     border-radius: 1%;
-    color: white;
+    color: black;
     border: 0px solid #ea9050 ;
     cursor: pointer;
 }
@@ -36,3 +36,28 @@
 tr{
     cursor: pointer;
 }
+
+.btnPlay{
+    background-color: transparent;
+    color: green;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.btnPlay:hover{
+    color: rgb(6, 201, 6);
+}
+
+/* add to liked btn */
+.addBtn{
+ background-color: transparent;
+ border-radius: 50%;
+ border: none;
+ font-size: 100%;
+ color: gray;
+}
+
+.addBtn:hover{
+    color: rgb(168, 167, 167);
+}
+

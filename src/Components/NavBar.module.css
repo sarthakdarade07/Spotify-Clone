@@ -65,7 +65,7 @@ margin-left: 18vw;
 
 }
 
-#nav_button:hover,#profileIcon:hover,#spanTxt:hover,#homeIcon:hover,#icon:hover{
+#nav_button:hover,#spanTxt:hover,#homeIcon:hover,#icon:hover{
     transform: scale(1.04);
 }
 
@@ -95,4 +95,8 @@ margin-left: 18vw;
     color: #B3B3B3;
     left: -5vw;
     font-size: medium;
+}
+
+#userIconDropdown{
+    z-index: 999999999;
 }

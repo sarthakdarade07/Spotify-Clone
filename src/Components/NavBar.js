@@ -35,7 +35,6 @@ function NavBar(props) {
             id={styles.spotifyIcon}></i>
         </a>
         <Container fluid>
-
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -48,8 +47,7 @@ function NavBar(props) {
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Home"
-                onClick={goToHome}
-                >
+                onClick={goToHome}>
                 <i className="bi bi-house-door-fill text-white"></i>
               </button>
 
@@ -80,8 +78,7 @@ function NavBar(props) {
                   className="btn btn-light"
                   data-toggle="tooltip"
                   data-placement="bottom"
-                  title="Upgrade to Premium"
-                >
+                  title="Upgrade to Premium">
                   Explore Premium
                 </button>
               </Link>
@@ -127,43 +124,72 @@ function NavBar(props) {
                   aria-expanded="false">
                   <i className="bi bi-person-circle"></i>
                 </button>
-                <ul
-                  className="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end"
-                  id={styles.userIconDropdown}>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Account
-                    </a>
+                <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-lg-end">
+                  <li
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Account">
+                    <a className="dropdown-item">Account</a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link
+                      to="/profile"
+                      className="dropdown-item"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="Profile">
                       Profile
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link
+                      to="/explorepremium"
+                      className="dropdown-item"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="Upgrad to Premium">
                       Upgrade to Premium
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link
+                      to="/support"
+                      className="dropdown-item"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="Support">
                       Support
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <Link
+                      to="/installapp"
+                      className="dropdown-item"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="Download">
                       Download
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Settings
-                    </a>
+                    <Link
+                      to="/seeting"
+                      className="dropdown-item"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="Setting">
+                      Setting
+                    </Link>
                   </li>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
-                    Log Out
-                  </a>
+                  <Link
+                    to="/logout"
+                    className="dropdown-item"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Log out">
+                    Log out
+                  </Link>
                 </ul>
               </div>
             </Nav>

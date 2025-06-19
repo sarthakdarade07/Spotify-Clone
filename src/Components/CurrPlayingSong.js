@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import styles from "./CurrPlayingSong.module.css";
 
 function CurrPlayingSong(props) {
+  //manage state of curr song playing;
   const [currSong, setCurrSong] = useState([]);
 
+  //list of available song and their path
   const songList = [
     {
       songId: "5sD68azrLfnPLvUHCill7b",
@@ -23,19 +25,27 @@ function CurrPlayingSong(props) {
     },
   ];
 
+  //function to match path and image with selected song
   function setSong(tempSong) {
     try {
       const tempArr = songList.filter((x) => x.songId === tempSong[0].id);
+     //fiter selected song from given songlist
+     
+        
       if (tempArr.length > 0) {
+        tempArr.push(props.song);
         setCurrSong(tempArr);
         props.getCurrSong(tempArr);
-      } else {
-        setCurrSong([]);
+      } else{
+        alert("Song is not available");
       }
     } catch (e) {
       console.log("error", e);
     }
   }
+  
+
+
 
   useEffect(() => {
     if (props.song) {
@@ -52,16 +62,15 @@ function CurrPlayingSong(props) {
             alt="Current Song"
             className={styles.musicImg}
           />
-        
+
           <marquee>
-            <h5>{props.song[0].name}</h5>
+            <h5>{currSong[1][0].name}</h5>
           </marquee>
           <ul type="none">
             <li>Artists</li>
-            <hr/>
-            {
-            props.song[0].artists.map((x,ind) => {
-              return <li key={ind}>{x.name}</li>; 
+            <hr />
+            {currSong[1][0].artists.map((x, ind) => {
+              return <li key={ind}>{x.name}</li>;
             })}
           </ul>
         </div>

@@ -10,7 +10,7 @@ function Tracks(props) {
   //it is set when favList req is sent
   //  also for pop up
   const [renderFlag,setRenderFlag]=useState(false); 
-  const [favListFlagFlag, setFavListFlag] = useState(false);
+  const [favListFlag, setFavListFlag] = useState(false);
   const [favList,setFavList]=useState([]);
   const [popObj,setPopObj]=useState();
    
@@ -51,11 +51,6 @@ function Tracks(props) {
     if(localStorage.getItem("favList")){
       favTracksArr=JSON.parse(localStorage.getItem("favList"));
     }
-   favTracksArr = favTracksArr.filter((i) => {
-     if (i.id != x.id) {
-       return i;
-     }
-   });
 
     favTracksArr.push(x);
     localStorage.setItem("favList",JSON.stringify(favTracksArr));
@@ -72,28 +67,62 @@ function Tracks(props) {
 
   //remove track from fav list
   function funRemoveFromFav(x) {
+   
+    if (isfavourite(x)==false){
+
+      var obj = {
+        message: "Song is not in Favourites",
+        bgColor: "#FFBF4B",
+        icon: "bi bi-x-circle",
+      };
+      setPopObj(obj);
+      props.getPopUpObj(obj);
+    }
+    else{
+      let favTracksArr = [];
+
+      if (localStorage.getItem("favList")) {
+        favTracksArr = JSON.parse(localStorage.getItem("favList"));
+      }
+      favTracksArr = favTracksArr.filter((i) => {
+        if (i.id != x.id) {
+          return i;
+        }
+      });
+
+      localStorage.setItem("favList", JSON.stringify(favTracksArr));
+      setRenderFlag(!renderFlag);
+
+      var obj = {
+        message: "Removed from favourites",
+        bgColor: "#DA3D55",
+        icon: "bi bi-trash3",
+      };
+      setPopObj(obj);
+      props.getPopUpObj(obj);
+    }
+    
+  }
+ //function to check wheter track is already fav
+  function isfavourite(x){
     let favTracksArr = [];
 
     if (localStorage.getItem("favList")) {
       favTracksArr = JSON.parse(localStorage.getItem("favList"));
     }
     favTracksArr = favTracksArr.filter((i) => {
-      if (i.id != x.id) {
+      if (i.id === x.id) {
         return i;
       }
     });
-    
-    localStorage.setItem("favList", JSON.stringify(favTracksArr));
-    setRenderFlag(!renderFlag);
-    
-    var obj = {
-      message: "Removed from favourites",
-      bgColor: "#DA3D55",
-      icon: "bi bi-trash3",
-    };
-    setPopObj(obj);
-    props.getPopUpObj(obj);
-    
+   
+    if(favTracksArr.length >0){
+      return true;
+    }else{
+      return false
+    }
+ 
+   
   }
 
 
@@ -147,7 +176,6 @@ function Tracks(props) {
 
     return () => {
       setFavListFlag(false);
-      setPopObj({});
     };
   }, [props, renderFlag]);
 
@@ -193,6 +221,9 @@ function Tracks(props) {
             <tr key={index}>
               <th>
                 <button
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Play"
                   onClick={() => {
                     playMusic(x);
                   }}
@@ -204,19 +235,36 @@ function Tracks(props) {
               <td>{x.name}</td>
               <th>
                 {/* add fav btn */}
-                
-                <button className={styles.addBtn}  data-toggle="tooltip"  data-placement="bottom"
-                 title="Add to favourites" onClick={() => { funAddFav(x); }}>
-                  <i class="bi bi-plus-circle"></i>
-                </button>
-                
+                {isfavourite(x) ? (
+                  <button
+                    style={{ color: "green" }}
+                    className={styles.addBtn}
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Favourite Track">
+                    <i class="bi bi-heart-fill"></i>
+                  </button>
+                ) : (
+                  <button
+                    className={styles.addBtn}
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Add to favourites"
+                    onClick={() => {
+                      funAddFav(x);
+                    }}>
+                    <i class="bi bi-plus-circle"></i>
+                  </button>
+                )}
               </th>
               <td>{calTime(x.duration_ms)}</td>
-            
+
               <th>
-                <Dropdown>
-                  <Dropdown.Toggle
-                    variant="dark">
+                <Dropdown
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Options">
+                  <Dropdown.Toggle variant="dark">
                     <i class="bi bi-three-dots-vertical"></i>
                   </Dropdown.Toggle>
 

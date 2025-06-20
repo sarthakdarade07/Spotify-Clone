@@ -39,7 +39,7 @@ function CurrPlayingSong(props) {
         props.getCurrSong(tempArr);
       } else{
         var obj = {
-          message: "Song is unavilable",
+          message: "Song is unavailable",
           bgColor: "#FFBF4B",
           icon: "bi bi-emoji-frown",
         };

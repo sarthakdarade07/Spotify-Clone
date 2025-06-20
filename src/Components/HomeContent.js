@@ -78,14 +78,6 @@ function HomeContent(props) {
             <div className={styles.columnHeading}>
               <h6>
                 <strong>Your Library</strong>
-                <button
-                  type="button"
-                  className="btn"
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Create a playlist">
-                  +
-                </button>
               </h6>
             </div>
             <div className={styles.dropdownContainer}>

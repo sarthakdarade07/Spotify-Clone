@@ -64,7 +64,6 @@ function RecommondedSongs(props) {
         var containerName = "container" + ind;
        
         return (
-         
           <div className={styles.cardSlider} key={ind}>
             <button
               type="button"
@@ -73,21 +72,20 @@ function RecommondedSongs(props) {
               onClick={() => {
                 funScrollRight(containerName);
               }}>
-              <i class="fa-solid fa-arrow-left"></i>
+              <i class="bi bi-chevron-left"></i>
             </button>
             <div className={styles.CardWrapper} id={containerName}>
               <div className={styles.cardContainer}>
-                {albumsData.map((x,index) => {
+                {albumsData.map((x, index) => {
                   var albumName;
                   var artistNames;
                   var imagesLinks;
                   var albumId;
                   try {
-                    
                     albumName = x.albums[ind].name;
                     artistNames = x.artist;
                     imagesLinks = x.albums[ind].images[0].url;
-                    albumId=x.albums[ind].id;
+                    albumId = x.albums[ind].id;
                     return (
                       <>
                         <NavLink>
@@ -95,7 +93,12 @@ function RecommondedSongs(props) {
                             class="card"
                             id={styles.card}
                             onClick={() => {
-                              sendTrackRequest(albumName,albumId,artistNames,imagesLinks);
+                              sendTrackRequest(
+                                albumName,
+                                albumId,
+                                artistNames,
+                                imagesLinks
+                              );
                             }}>
                             <div className={styles.cardLink}>
                               <img
@@ -128,7 +131,7 @@ function RecommondedSongs(props) {
               onClick={() => {
                 funScrollLeft(containerName);
               }}>
-              <i class="fa-solid fa-arrow-right"></i>
+              <i class="bi bi-chevron-right"></i>
             </button>
           </div>
         );

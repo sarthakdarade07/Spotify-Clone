@@ -8,9 +8,12 @@ function Tracks(props) {
   const [track, setTrack] = useState([]);
   const [selectedTrack, setSelectedTrack] = useState({});
   //it is set when favList req is sent
-  const [renderFlag,setRenderFlag]=useState(false);
+  //  also for pop up
+  const [renderFlag,setRenderFlag]=useState(false); 
   const [favListFlagFlag, setFavListFlag] = useState(false);
-
+  const [favList,setFavList]=useState([]);
+  const [popObj,setPopObj]=useState();
+   
   // Filter and set tracks based on album ID
   function searchTrack(list, albumId) {
     try {
@@ -53,9 +56,17 @@ function Tracks(props) {
        return i;
      }
    });
+
     favTracksArr.push(x);
-    alert("Song Added to Favourites")
     localStorage.setItem("favList",JSON.stringify(favTracksArr));
+    
+    var obj = {
+      message: "Added to favourites",
+      bgColor: "#1B9064",
+      icon:"bi bi-check2-circle",
+    };
+    setPopObj(obj);
+    props.getPopUpObj(obj);
     
   }
 
@@ -74,7 +85,14 @@ function Tracks(props) {
     
     localStorage.setItem("favList", JSON.stringify(favTracksArr));
     setRenderFlag(!renderFlag);
-    alert("Song Removed from favourites");
+    
+    var obj = {
+      message: "Removed from favourites",
+      bgColor: "#DA3D55",
+      icon: "bi bi-trash3",
+    };
+    setPopObj(obj);
+    props.getPopUpObj(obj);
     
   }
 
@@ -119,11 +137,17 @@ function Tracks(props) {
       console.log(selectedTrack);
     }
 
+    // fetchFavList favList
+    setFavList( JSON.parse(localStorage.getItem("favList")));
+
     // Scroll to top
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
 
+    
+
     return () => {
       setFavListFlag(false);
+      setPopObj({});
     };
   }, [props, renderFlag]);
 
@@ -179,18 +203,16 @@ function Tracks(props) {
               <td>{index + 1}</td>
               <td>{x.name}</td>
               <th>
-                <button
-                  className={styles.addBtn}
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Add to favourites"
-                  onClick={() => {
-                    funAddFav(x);
-                  }}>
+                {/* add fav btn */}
+                
+                <button className={styles.addBtn}  data-toggle="tooltip"  data-placement="bottom"
+                 title="Add to favourites" onClick={() => { funAddFav(x); }}>
                   <i class="bi bi-plus-circle"></i>
                 </button>
+                
               </th>
               <td>{calTime(x.duration_ms)}</td>
+            
               <th>
                 <Dropdown>
                   <Dropdown.Toggle

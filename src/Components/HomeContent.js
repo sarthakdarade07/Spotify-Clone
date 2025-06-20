@@ -156,8 +156,15 @@ function HomeContent(props) {
               <Route path="/explorepremium" element={<ExplorePremium />} />
               <Route path="/installapp" element={<InstallApp />} />
               <Route path="/music" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)}/>}/>
-              <Route path="/tracks" element={<Tracks trackName={trackName} getSong={(param) => {setSong(param)}}/>}/>
-              <Route path="/favourites" element={<FavouriteList getSong={(param) => {setSong(param)}}/>}></Route>
+              <Route path="/tracks" element={<Tracks 
+                                              trackName={trackName}
+                                              getSong={(param) => {setSong(param)}}
+                                              getPopUpObj={(obj)=>{props.getPopUpObj(obj)}}
+                                               />}/>
+              <Route path="/favourites" element={<FavouriteList getSong={(param) => {setSong(param)}} 
+                                               getPopUpObj={(obj)=>{props.getPopUpObj(obj)}}
+                                                />}>
+                                           </Route>
               <Route path="*" element={<div>404 Not Found</div>} />
             </Routes>
             <Footer></Footer>
@@ -169,8 +176,8 @@ function HomeContent(props) {
             <CurrPlayingSong
               song={song}
               getCurrSong={(obj) => {
-                props.getPlayingSong(obj);
-              }}
+                props.getPlayingSong(obj);}}
+                getPopUpObj={(obj)=>{props.getPopUpObj(obj)}}
             />
           )}
           <div className={styles.content}></div>

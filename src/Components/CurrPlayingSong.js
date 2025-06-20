@@ -4,6 +4,7 @@ import styles from "./CurrPlayingSong.module.css";
 function CurrPlayingSong(props) {
   //manage state of curr song playing;
   const [currSong, setCurrSong] = useState([]);
+  const [popObj, setPopObj] = useState();
 
   //list of available song and their path
   const songList = [
@@ -37,7 +38,13 @@ function CurrPlayingSong(props) {
         setCurrSong(tempArr);
         props.getCurrSong(tempArr);
       } else{
-        alert("Song is not available");
+        var obj = {
+          message: "Song is unavilable",
+          bgColor: "#FFBF4B",
+          icon: "bi bi-emoji-frown",
+        };
+        setPopObj(obj);
+        props.getPopUpObj(obj);
       }
     } catch (e) {
       console.log("error", e);
@@ -50,6 +57,10 @@ function CurrPlayingSong(props) {
   useEffect(() => {
     if (props.song) {
       findSong(props.song);
+    }
+
+    return ()=>{
+      setPopObj({});
     }
   }, [props.song]);
 

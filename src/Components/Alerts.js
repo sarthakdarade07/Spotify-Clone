@@ -29,7 +29,7 @@ export default function  Alerts(props){
           <Modal show={show} className={styles.modal}>
             <Modal.Body className={styles.modalBody} style={modalStyle}>
               <p>
-                <i className={props.popUpObj.icon}></i>
+                <i className={props.popUpObj.icon}></i> {" "}
                 {props.popUpObj.message}
               </p>
             </Modal.Body>

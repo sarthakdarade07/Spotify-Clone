@@ -11,7 +11,7 @@ function funPlaySong(obj){
 }
   return (
     <>
-      <Tracks favListFlag={true} getSong={funPlaySong}></Tracks>
+      <Tracks favListFlag={true} getSong={funPlaySong} getPopUpObj={(obj)=>{props.getPopUpObj(obj)}}></Tracks>
     </>
   );
 }

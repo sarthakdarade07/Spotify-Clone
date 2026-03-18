@@ -21,10 +21,11 @@ body{
 #homeIcon{
     background-color: #1F1F1F;
     border-radius: 50%;
-    font-size: large;
+    font-size: x-large;
     margin-right:1vw;
     color: white;
     border: transparent;
+    height: 10%;
     transition: transform 0.1s ease-in;
 }
 #nav_search{

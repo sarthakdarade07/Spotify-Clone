@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./HomeContent.module.css";
 import RecommondedSongs from "./RecommondedSongs";
 import ExplorePremium from "./ExplorePremium";
 import Footer from "./Footer";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, ScrollRestoration, useLocation, useNavigate, useNavigationType } from "react-router-dom";
 import InstallApp from "./InstallApp";
 import Tracks from "./Tracks";
 import ScrollToTop from "./ScrollToTop";
@@ -14,41 +14,44 @@ import FavouriteList from "./FavouriteList";
 function HomeContent(props) {
   let [sortBy, setSortBy] = useState("Recents");
   let [trackName, setTrackName] = useState("");
- 
+
+  //location
+  let location = useLocation();
+  let navigationType = useNavigationType();
+
   //song is representing currunt playing song
   let [song, setSong] = useState();
-   let [styleCol,setStyleCol]=useState();
-   let [styleCol2, setStyleCol2] = useState();
-   let [styleCol3, setStyleCol3] = useState();
-   
-  
-   //navigate
-  let navigate=useNavigate();
- 
+  let [styleCol, setStyleCol] = useState();
+  let [styleCol2, setStyleCol2] = useState();
+  let [styleCol3, setStyleCol3] = useState();
+
+  //ref of col 2
+  let container2 = useRef();
+
+  //navigate
+  let navigate = useNavigate();
+
   function funChange(event) {
     setSortBy(event.target.innerText);
   }
 
- 
-
-  useEffect(()=>{
-     if(!song){
+  useEffect(() => {
+    if (!song) {
       let styleColtemp = {
-         height:85+"vh",
+        height: 85 + "vh",
       };
       setStyleCol(styleColtemp);
-     let  styleCol2temp={
-        width:100+"%",
-        height:85+"vh",
-      }
+      let styleCol2temp = {
+        width: 100 + "%",
+        height: 85 + "vh",
+      };
       setStyleCol2(styleCol2temp);
 
-     let styleCol3temp={
-        display:'none',
-      }
+      let styleCol3temp = {
+        display: "none",
+      };
       setStyleCol3(styleCol3temp);
-    }else{
-
+    } else {
       let styleColtemp = {
         height: 75 + "vh",
       };
@@ -60,15 +63,24 @@ function HomeContent(props) {
       setStyleCol2(styleCol2temp);
 
       let styleCol3temp = {
-        display:"flex",
+        display: "flex",
       };
       setStyleCol3(styleCol3temp);
-
     }
+  }, [song]);
 
+  //Whenever new component is render scrollBar of column 2 will be set to top
+  useEffect(() => {
+    //navigationTypes
+    //push = User clicked a link or called navigate()
+    //POP = User used the browser back/forward buttons. navigate(-1) is also pop
+    //REPLACE = Programmatic navigate(..., { replace: true })
+    //if its not forward or back then only scrollBar to top
 
-  },[song])
-  
+    if (navigationType != "POP") {
+      container2.current.scrollTop = 0;
+    }
+  }, [location.pathname]);
 
   return (
     <>
@@ -123,7 +135,11 @@ function HomeContent(props) {
               </div>
             </div>
 
-            <div className={styles.playListCardContainer} onClick={()=>{navigate("/favourites")}}>
+            <div
+              className={styles.playListCardContainer}
+              onClick={() => {
+                navigate("/favourites");
+              }}>
               <div className={styles.playListCard}>
                 <img
                   src="Images\music_Icon_image.png"
@@ -135,28 +151,61 @@ function HomeContent(props) {
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
         {/* ----------------------column2 ---------------------------------*/}
-        <div className={styles.columns} id={styles.column2} style={styleCol2}>
-          <ScrollToTop />
+        <div
+          className={styles.columns}
+          id={styles.column2}
+          style={styleCol2}
+          ref={container2}>
           <div className={styles.content}>
             <Routes>
-              <Route path="/" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)}/>}/>
+              <Route
+                path="/"
+                element={
+                  <RecommondedSongs
+                    getTrackName={(name) => setTrackName(name)}
+                  />
+                }
+              />
               <Route path="/explorepremium" element={<ExplorePremium />} />
               <Route path="/installapp" element={<InstallApp />} />
-              <Route path="/music" element={<RecommondedSongs getTrackName={(name) => setTrackName(name)}/>}/>
-              <Route path="/tracks" element={<Tracks 
-                                              trackName={trackName}
-                                              getSong={(param) => {setSong(param)}}
-                                              getPopUpObj={(obj)=>{props.getPopUpObj(obj)}}
-                                               />}/>
-              <Route path="/favourites" element={<FavouriteList getSong={(param) => {setSong(param)}} 
-                                               getPopUpObj={(obj)=>{props.getPopUpObj(obj)}}
-                                                />}>
-                                           </Route>
+              <Route
+                path="/music"
+                element={
+                  <RecommondedSongs
+                    getTrackName={(name) => setTrackName(name)}
+                  />
+                }
+              />
+              <Route
+                path="/tracks"
+                element={
+                  <Tracks
+                    trackName={trackName}
+                    getSong={(param) => {
+                      setSong(param);
+                    }}
+                    getPopUpObj={(obj) => {
+                      props.getPopUpObj(obj);
+                    }}
+                  />
+                }
+              />
+              <Route
+                path="/favourites"
+                element={
+                  <FavouriteList
+                    getSong={(param) => {
+                      setSong(param);
+                    }}
+                    getPopUpObj={(obj) => {
+                      props.getPopUpObj(obj);
+                    }}
+                  />
+                }></Route>
               <Route path="*" element={<div>404 Not Found</div>} />
             </Routes>
             <Footer></Footer>
@@ -168,8 +217,11 @@ function HomeContent(props) {
             <CurrPlayingSong
               song={song}
               getCurrSong={(obj) => {
-                props.getPlayingSong(obj);}}
-                getPopUpObj={(obj)=>{props.getPopUpObj(obj)}}
+                props.getPlayingSong(obj);
+              }}
+              getPopUpObj={(obj) => {
+                props.getPopUpObj(obj);
+              }}
             />
           )}
           <div className={styles.content}></div>

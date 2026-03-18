@@ -4,9 +4,8 @@ function ApiCalls() {
   // const clientId = ""; // client id
   // const clientSecret = ""; // client Secret
 
-
-
-
+  const clientId = "d094eedad5a8471195082d8a864070d9";
+  const clientSecret = "2297e21a926348218a800c1e74c936fd";
 
   const artistIds = [
     { id: "4YRxDV8wJFPHPTeXepOstw", name: "Arijit Singh" },
@@ -92,8 +91,6 @@ function ApiCalls() {
           )
         );
         localStorage.setItem("albums", JSON.stringify(allAlbums));
-
-      
 
         // Parallel fetch of tracks from all albums
         const allTracks = await Promise.all(

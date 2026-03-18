@@ -163,7 +163,7 @@ function Tracks(props) {
 
       setSelectedTrack(tempArr);
       setTrack(favTracksArr);
-      console.log(selectedTrack);
+   
     }
 
     // fetchFavList favList
@@ -260,23 +260,31 @@ function Tracks(props) {
               <td>{calTime(x.duration_ms)}</td>
 
               <th>
-                <Dropdown
-                  data-toggle="tooltip"
-                  data-placement="bottom"
-                  title="Options">
-                  <Dropdown.Toggle variant="dark">
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </Dropdown.Toggle>
+               
 
-                  <Dropdown.Menu variant="dark">
-                    <Dropdown.Item
-                      onClick={() => {
-                        funRemoveFromFav(x);
-                      }}>
-                      Remove from Favourites
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                <div class="dropdown bg-dark">
+                  <button
+                    class="btn btn-dark text-light"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-bs-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Options">
+                    <i class="bi bi-three-dots-vertical"></i>
+                  </button>
+                  <div
+                    class="dropdown-menu bg-dark text-light"
+                    aria-labelledby="dropdownMenuButton">
+                      <ul type='none'>
+                        <li onClick={() => {funRemoveFromFav(x); }}>Remove from Favourites</li>
+                        <hr/>
+                      </ul>
+                    
+                  </div>
+                </div>
               </th>
             </tr>
           ))}
